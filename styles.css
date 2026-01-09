@@ -2840,12 +2840,13 @@ body.isOverlayOpen {
     gap: 10px;
 }
 
-.brand__logo {
-    width: 18px;
-    height: 18px;
-    opacity: 0.92;
-    transform: translateY(-0.5px);
+.logo {
+  width: 24px;
+  height: 24px;
+  opacity: 0.92;
+  display: block;
 }
+
 
 /* ================================
    Chrome glass rendering fix
