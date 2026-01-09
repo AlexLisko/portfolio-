@@ -1,0 +1,3186 @@
+/* =========================================================
+   Alex Lisko Portfolio — Apple-esque, job-ready stylesheet
+   Works with your current index.html (portal, ambient, modal)
+   ========================================================= */
+
+:root {
+    --bg: #0b0b0c;
+    --bg2: #0f1012;
+    --fg: rgba(255, 255, 255, .92);
+    --muted: rgba(255, 255, 255, .62);
+    --hairline: rgba(255, 255, 255, .10);
+
+    --accent: #66A6FF;
+    --accent2: #A3FFCB;
+
+    --radius: 18px;
+    --radius2: 22px;
+
+    --max: 1080px;
+    --gutter: clamp(18px, 3.5vw, 44px);
+
+    --h1: clamp(42px, 6vw, 86px);
+    --h2: clamp(22px, 2.2vw, 30px);
+    --h3: 18px;
+    --p: clamp(16px, 1.15vw, 18px);
+
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    --dur: 520ms;
+
+    --shadow-lg: 0 24px 80px rgba(0, 0, 0, .45);
+    --shadow-md: 0 14px 40px rgba(0, 0, 0, .35);
+}
+
+/* ===== 3D Stage ===== */
+.macStage {
+    position: relative;
+    height: 200vh;
+    /* gives scroll room */
+    background: radial-gradient(1200px 900px at 20% 30%, rgba(140, 255, 245, .10), transparent 60%),
+        radial-gradient(900px 700px at 90% 40%, rgba(160, 120, 255, .12), transparent 55%),
+        #06070a;
+    overflow: hidden;
+}
+
+.macCanvas {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: block;
+}
+
+.macHUD {
+    position: sticky;
+    top: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.macHUD__title {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-weight: 650;
+    opacity: .92;
+    pointer-events: none;
+}
+
+.macHUD__hint {
+    position: absolute;
+    top: 18px;
+    right: 140px;
+    opacity: .65;
+    pointer-events: none;
+}
+
+.macHUD__skip {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    pointer-events: auto;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ===== Screen UI overlay ===== */
+.macScreenUI {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    /* disabled until “entered” */
+    opacity: 0;
+    transition: opacity 240ms ease;
+}
+
+.macScreenUI.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.desktopTopBar {
+    position: absolute;
+    top: 18vh;
+    width: min(760px, calc(100vw - 40px));
+    height: 42px;
+    border-radius: 14px 14px 0 0;
+    background: rgba(16, 18, 22, .75);
+    border: 1px solid rgba(255, 255, 255, .10);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    backdrop-filter: blur(12px);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.dot--red {
+    background: rgba(255, 90, 90, .85);
+}
+
+.dot--yellow {
+    background: rgba(255, 205, 70, .85);
+}
+
+.dot--green {
+    background: rgba(90, 220, 120, .85);
+}
+
+.desktopTitle {
+    margin-left: 10px;
+    opacity: .8;
+    font-size: 13px;
+}
+
+.desktopBody {
+    position: absolute;
+    top: calc(18vh + 42px);
+    width: min(760px, calc(100vw - 40px));
+    height: min(440px, 60vh);
+    border-radius: 0 0 18px 18px;
+    background: rgba(10, 12, 16, .55);
+    border: 1px solid rgba(255, 255, 255, .10);
+    border-top: 0;
+    backdrop-filter: blur(14px);
+    overflow: hidden;
+}
+
+/* Dock */
+.dock {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .06);
+}
+
+.dockIcon {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(0, 0, 0, .18);
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* Finder Window */
+.finderWindow {
+    position: absolute;
+    inset: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(16, 18, 22, .75);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .45);
+    overflow: hidden;
+}
+
+.finderHeader {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.finderHeader__title {
+    font-weight: 650;
+    opacity: .9;
+}
+
+.finderHeader__close {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .06);
+    color: inherit;
+    cursor: pointer;
+}
+
+.finderContent {
+    padding: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.fileRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, .04);
+    cursor: pointer;
+    text-align: left;
+}
+
+.fileRow:hover {
+    border-color: rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .06);
+}
+
+.fileIcon {
+    opacity: .7;
+}
+
+.fileName {
+    font-weight: 650;
+}
+
+.fileMeta {
+    opacity: .65;
+    font-size: 13px;
+}
+
+/* Vision Pro–inspired glass lens — refined */
+.hero {
+    position: relative;
+    overflow: hidden;
+    /* keeps lens from looking weird outside hero */
+}
+
+.hero__inner {
+    position: relative;
+}
+
+.lens {
+    position: absolute;
+    right: -120px;
+    top: -70px;
+
+    width: min(560px, 58vw);
+    height: min(360px, 38vw);
+
+    border-radius: 999px;
+    pointer-events: none;
+
+    /* softer presence */
+    opacity: .48;
+    filter: blur(.2px) saturate(1.05);
+
+    /* “glass” surface */
+    border: 1px solid color-mix(in srgb, var(--hairline) 55%, white 45%);
+    background:
+        radial-gradient(220px 160px at 28% 28%,
+            rgba(255, 255, 255, .22),
+            rgba(255, 255, 255, 0) 62%),
+        radial-gradient(260px 200px at 75% 65%,
+            color-mix(in srgb, var(--accent2) 16%, transparent),
+            rgba(255, 255, 255, 0) 70%),
+        linear-gradient(135deg,
+            color-mix(in srgb, var(--accent) 14%, transparent),
+            color-mix(in srgb, var(--accent2) 12%, transparent));
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .28),
+        inset 0 1px 0 rgba(255, 255, 255, .14);
+
+    /* feather edges so it blends into the page */
+    -webkit-mask-image: radial-gradient(closest-side, rgba(0, 0, 0, 1) 62%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(closest-side, rgba(0, 0, 0, 1) 62%, rgba(0, 0, 0, 0) 100%);
+
+    /* motion driven by CSS vars set in JS */
+    transform: translate3d(0, var(--lensY, 0px), 0) rotate(var(--lensR, -6deg));
+    transition: opacity 220ms var(--ease);
+}
+
+/* subtle internal texture so it doesn’t feel like a flat blob */
+.lens::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    opacity: .12;
+    mix-blend-mode: overlay;
+    transform: translate3d(0, 0, 0);
+}
+
+/* mobile tuning */
+@media (max-width: 900px) {
+    .lens {
+        right: -180px;
+        top: -90px;
+        opacity: .35;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lens {
+        transform: translate3d(0, 0, 0) rotate(-6deg);
+    }
+}
+
+
+
+/* Light theme (toggle via data-theme="light") */
+:root[data-theme="light"] {
+    --bg: #f6f6f7;
+    --bg2: #ffffff;
+    --fg: rgba(10, 10, 12, .92);
+    --muted: rgba(10, 10, 12, .62);
+    --hairline: rgba(10, 10, 12, .12);
+    --shadow-lg: 0 24px 80px rgba(0, 0, 0, .10);
+    --shadow-md: 0 14px 40px rgba(0, 0, 0, .10);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(1200px 700px at 20% -10%,
+            color-mix(in srgb, var(--accent) 18%, transparent),
+            transparent 55%),
+        radial-gradient(900px 600px at 90% 10%,
+            color-mix(in srgb, var(--accent2) 16%, transparent),
+            transparent 55%),
+        var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+a,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: .92;
+}
+
+:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, white 30%);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+/* Containment */
+.header__inner,
+.hero__inner,
+.section,
+.footer {
+    width: min(var(--max), calc(100% - (var(--gutter) * 2)));
+    margin: 0 auto;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 12px;
+    background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    border: 1px solid var(--hairline);
+    padding: 10px 14px;
+    border-radius: 14px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    left: 12px;
+}
+
+/* Type */
+h1 {
+    font-size: var(--h1);
+    line-height: 1.02;
+    margin: 0;
+    letter-spacing: -0.035em;
+}
+
+h2 {
+    font-size: var(--h2);
+    line-height: 1.18;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    margin: 0;
+    font-size: var(--h3);
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin: 0;
+    font-size: var(--p);
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 72ch;
+}
+
+/* =========================================================
+   Ambient background (orbs + grain)
+   ========================================================= */
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 999px;
+    filter: blur(40px);
+    opacity: .35;
+    transform: translate3d(0, 0, 0);
+    animation: drift 18s var(--ease) infinite alternate;
+}
+
+.orb-a {
+    left: -120px;
+    top: -140px;
+    background: radial-gradient(circle at 30% 30%,
+            color-mix(in srgb, var(--accent) 55%, transparent),
+            transparent 55%);
+}
+
+.orb-b {
+    right: -140px;
+    top: 40px;
+    background: radial-gradient(circle at 30% 30%,
+            color-mix(in srgb, var(--accent2) 50%, transparent),
+            transparent 60%);
+    animation-duration: 22s;
+}
+
+@keyframes drift {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(20px, 30px, 0) scale(1.06);
+    }
+}
+
+.grain {
+    position: absolute;
+    inset: -40%;
+    opacity: .10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    transform: rotate(4deg);
+}
+
+/* Cursor halo */
+.halo {
+    position: fixed;
+    width: 240px;
+    height: 240px;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 5;
+    background: radial-gradient(circle,
+            color-mix(in srgb, var(--accent) 22%, transparent),
+            transparent 60%);
+    filter: blur(10px);
+    opacity: .45;
+    mix-blend-mode: screen;
+}
+
+/* =========================================================
+   Scroll progress bar
+   ========================================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 60;
+    background: transparent;
+}
+
+.scroll-progress__bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* =========================================================
+   Header / Nav
+   ========================================================= */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--hairline);
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.brand__mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid var(--hairline);
+}
+
+.nav {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.nav__link {
+    font-size: 14px;
+    color: color-mix(in srgb, var(--fg) 78%, transparent);
+    padding: 9px 12px;
+    border-radius: 14px;
+}
+
+.nav__link:hover {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid var(--hairline);
+    padding: 8px 11px;
+    /* keep size after border */
+    color: var(--fg);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Buttons */
+.btn {
+    appearance: none;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .06);
+    color: var(--fg);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease), opacity 180ms var(--ease);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, .09);
+    border-color: color-mix(in srgb, var(--hairline) 55%, white 45%);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn--primary {
+    border: 0;
+    color: rgba(0, 0, 0, .88);
+    font-weight: 800;
+    background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent) 88%, white 12%),
+            color-mix(in srgb, var(--accent2) 86%, white 14%));
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.btn--primary:hover {
+    opacity: .96;
+}
+
+.btn--ghost {
+    background: rgba(255, 255, 255, .04);
+}
+
+.hamburger {
+    display: none;
+    width: 44px;
+    height: 40px;
+    border-radius: 14px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .06);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-direction: column;
+}
+
+.hamburger span {
+    width: 18px;
+    height: 2px;
+    background: color-mix(in srgb, var(--fg) 82%, transparent);
+    border-radius: 999px;
+}
+
+/* Drawer */
+.drawer {
+    border-top: 1px solid var(--hairline);
+    background: color-mix(in srgb, var(--bg2) 78%, transparent);
+    padding: 10px 0 14px;
+}
+
+.drawer__link {
+    display: block;
+    padding: 10px 0;
+    color: color-mix(in srgb, var(--fg) 82%, transparent);
+}
+
+.drawer__row {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+/* Accent menu */
+.accent {
+    position: relative;
+}
+
+.accent__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    backdrop-filter: blur(16px);
+    display: none;
+    gap: 10px;
+}
+
+.accent__menu[data-open="true"] {
+    display: flex;
+}
+
+.swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--hairline) 60%, white 40%);
+    background: rgba(255, 255, 255, .25);
+    cursor: pointer;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+    padding: clamp(58px, 8vw, 110px) 0 22px;
+}
+
+.hero__inner {
+    position: relative;
+}
+
+.hero__badge {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .05);
+    color: color-mix(in srgb, var(--fg) 80%, transparent);
+    font-size: 13px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.hero__title {
+    margin: 16px 0 12px;
+    max-width: 18ch;
+}
+
+.hero__titleAccent {
+    color: color-mix(in srgb, var(--fg) 88%, transparent);
+}
+
+.hero__subtitle {
+    max-width: 62ch;
+    color: color-mix(in srgb, var(--muted) 100%, transparent);
+}
+
+.hero__cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.hero__stats {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 760px;
+}
+
+.stat {
+    padding: 16px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .04);
+    box-shadow: var(--shadow-md);
+}
+
+.stat__kpi {
+    font-weight: 850;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.stat__label {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.hero__hint {
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: color-mix(in srgb, var(--fg) 55%, transparent);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.hero__hintLine {
+    width: 44px;
+    height: 1px;
+    background: var(--hairline);
+}
+
+/* =========================================================
+   Sections / Cards / Grids
+   ========================================================= */
+.section {
+    padding: clamp(68px, 10vw, 140px) 0;
+    border-top: 1px solid var(--hairline);
+}
+
+.section__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 22px;
+    margin-bottom: 20px;
+}
+
+.section__desc {
+    max-width: 58ch;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+    border-radius: var(--radius2);
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .04);
+    box-shadow: var(--shadow-md);
+    padding: 18px;
+}
+
+.pill {
+    display: inline-flex;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .04);
+    font-size: 12px;
+    color: color-mix(in srgb, var(--fg) 76%, transparent);
+}
+
+.case__meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    flex-wrap: nowrap;
+    /* 👈 prevents second line */
+    overflow-x: auto;
+    /* allows scroll if needed */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.case__meta::-webkit-scrollbar {
+    display: none;
+    /* Safari / Chrome */
+}
+
+.pill {
+    white-space: nowrap;
+    /* 👈 keeps text on one line */
+    flex-shrink: 0;
+    /* 👈 prevents squeezing */
+}
+
+.case__title {
+    margin-top: 6px;
+}
+
+.case__desc {
+    margin-top: 8px;
+}
+
+.case__impact {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.case__impact .label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.case__impact .value {
+    font-size: 13px;
+    color: color-mix(in srgb, var(--fg) 84%, transparent);
+}
+
+.case__open {
+    margin-top: 14px;
+}
+
+/* Split About */
+.section--split .split {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 14px;
+    align-items: start;
+}
+
+.lede {
+    margin-top: 10px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.chip {
+    display: inline-flex;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .03);
+    font-size: 12px;
+    color: color-mix(in srgb, var(--fg) 78%, transparent);
+}
+
+.callout {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--hairline);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, .06),
+            rgba(255, 255, 255, .03));
+}
+
+.callout__title {
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--fg) 65%, transparent);
+}
+
+.callout__body {
+    margin-top: 8px;
+    color: color-mix(in srgb, var(--fg) 88%, transparent);
+    line-height: 1.55;
+}
+
+/* Portrait card */
+.portrait {
+    padding: 18px;
+}
+
+.portrait__top {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .18), transparent 55%),
+        linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .02));
+}
+
+.portrait__name {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.portrait__role {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.portrait__rows {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .03);
+    font-size: 13px;
+}
+
+.row span:first-child {
+    color: var(--muted);
+}
+
+.portrait__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* Process steps */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.step__num {
+    font-weight: 900;
+    color: color-mix(in srgb, var(--fg) 70%, transparent);
+    letter-spacing: -0.03em;
+}
+
+.step__title {
+    margin-top: 10px;
+}
+
+.step__desc {
+    margin-top: 8px;
+}
+
+.list {
+    margin: 12px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+.list li {
+    margin: 6px 0;
+}
+
+/* Writing notes */
+.note__desc {
+    margin-top: 8px;
+}
+
+.note__open {
+    margin-top: 12px;
+}
+
+/* Contact */
+.contact {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 14px;
+    align-items: start;
+}
+
+.field {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.field span {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+input,
+textarea {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .04);
+    color: var(--fg);
+    padding: 12px 12px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form__row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.form__hint {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.contact__links {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.contact__divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+}
+
+.contact__small {
+    font-size: 13px;
+}
+
+/* Footer */
+.footer {
+    padding: 24px 0 38px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   Modal
+   ========================================================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+}
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+    backdrop-filter: blur(8px);
+}
+
+.modal__panel {
+    position: relative;
+    width: min(920px, calc(100% - 40px));
+    margin: 6vh auto;
+    border-radius: 22px;
+    border: 1px solid var(--hairline);
+    background: color-mix(in srgb, var(--bg2) 78%, transparent);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.modal__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.modal__title {
+    margin: 0;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+}
+
+.iconbtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .04);
+    color: var(--fg);
+    cursor: pointer;
+}
+
+.modal__body {
+    padding: 18px;
+}
+
+.cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.mini {
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, .03);
+    border-radius: 18px;
+    padding: 12px;
+}
+
+.mini .k {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.mini .v {
+    margin-top: 6px;
+    color: color-mix(in srgb, var(--fg) 88%, transparent);
+    font-size: 13px;
+}
+
+.divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 14px 0;
+}
+
+/* =========================================================
+   Portal (Vision Pro entry)
+   ========================================================= */
+.portal {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: grid;
+    place-items: center;
+}
+
+.portal__bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(900px 600px at 30% 20%,
+            color-mix(in srgb, var(--accent) 22%, transparent),
+            transparent 60%),
+        radial-gradient(900px 600px at 80% 30%,
+            color-mix(in srgb, var(--accent2) 18%, transparent),
+            transparent 60%),
+        rgba(0, 0, 0, .60);
+    backdrop-filter: blur(12px);
+}
+
+.portal__stage {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.portal__glass {
+    width: min(720px, calc(100% - 40px));
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-lg);
+    padding: 22px;
+}
+
+.portal__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .72);
+}
+
+.portal__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+}
+
+.portal__title {
+    margin-top: 14px;
+    font-size: clamp(32px, 4.2vw, 54px);
+    letter-spacing: -0.03em;
+}
+
+.portal__sub {
+    margin-top: 10px;
+    max-width: 60ch;
+}
+
+.portal__row {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.portal__hint {
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, .65);
+}
+
+.portal--enter .portal__glass {
+    animation: portalIn 900ms var(--ease) both;
+}
+
+.portal--exit {
+    animation: portalOut 560ms var(--ease) both;
+}
+
+@keyframes portalIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(.98);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes portalOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   Quiet motion hooks
+   ========================================================= */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(6px);
+    transition:
+        opacity var(--dur) var(--ease),
+        transform var(--dur) var(--ease),
+        filter var(--dur) var(--ease);
+    will-change: opacity, transform, filter;
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+[data-stagger]>* {
+    transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid--2 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .section__head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .section--split .split {
+        grid-template-columns: 1fr;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .controls {
+        display: none;
+    }
+
+    .hamburger {
+        display: inline-flex;
+    }
+}
+
+/* Cinematic page transition */
+.transition {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1.02);
+    background:
+        radial-gradient(900px 520px at 25% 30%,
+            color-mix(in srgb, var(--accent) 22%, transparent),
+            transparent 60%),
+        radial-gradient(900px 520px at 80% 35%,
+            color-mix(in srgb, var(--accent2) 18%, transparent),
+            transparent 60%),
+        rgba(0, 0, 0, .85);
+    backdrop-filter: blur(10px);
+}
+
+.transition.is-on {
+    animation: transitionIn 620ms var(--ease) forwards;
+}
+
+.transition.is-off {
+    animation: transitionOut 700ms var(--ease) forwards;
+}
+
+@keyframes transitionIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes transitionOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.01);
+    }
+}
+
+/* =========================================
+   Keynote-style Portal Transition
+   ========================================= */
+
+.portal-x {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+
+    /* We'll animate this mask (Safari-friendly) */
+    -webkit-mask-image: radial-gradient(circle var(--pr, 0px) at var(--px, 50vw) var(--py, 50vh),
+            #000 0%,
+            #000 65%,
+            transparent 100%);
+    mask-image: radial-gradient(circle var(--pr, 0px) at var(--px, 50vw) var(--py, 50vh),
+            #000 0%,
+            #000 65%,
+            transparent 100%);
+}
+
+.portal-x__veil {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(900px 600px at 25% 30%,
+            color-mix(in srgb, var(--accent) 24%, transparent),
+            transparent 60%),
+        radial-gradient(900px 600px at 80% 35%,
+            color-mix(in srgb, var(--accent2) 18%, transparent),
+            transparent 62%),
+        rgba(0, 0, 0, .90);
+    backdrop-filter: blur(12px);
+    opacity: .95;
+}
+
+.portal-x__ring {
+    position: absolute;
+    inset: 0;
+    /* a subtle luminous edge that sells the “portal” */
+    background:
+        radial-gradient(circle calc(var(--pr, 0px) + 10px) at var(--px, 50vw) var(--py, 50vh),
+            rgba(255, 255, 255, .18) 0%,
+            rgba(255, 255, 255, .10) 22%,
+            rgba(255, 255, 255, 0) 38%);
+    filter: blur(0.2px);
+    opacity: .9;
+    mix-blend-mode: screen;
+}
+
+/* OUT animation: portal opens */
+.portal-x.is-opening {
+    opacity: 1;
+    animation: portalOpen 720ms var(--ease) forwards;
+}
+
+@keyframes portalOpen {
+    0% {
+        --pr: 0px;
+        transform: scale(1.02);
+    }
+
+    100% {
+        --pr: 180vmax;
+        transform: scale(1);
+    }
+}
+
+/* IN animation: portal closes away (arrive) */
+.portal-x.is-arriving {
+    opacity: 1;
+    animation: portalArrive 760ms var(--ease) forwards;
+}
+
+@keyframes portalArrive {
+    0% {
+        --pr: 180vmax;
+        transform: scale(1);
+    }
+
+    100% {
+        --pr: 0px;
+        transform: scale(1.02);
+        opacity: 0;
+    }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .portal-x {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .portal-x.is-opening,
+    .portal-x.is-arriving {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+body[data-scene="work"] {
+    background:
+        radial-gradient(1200px 700px at 80% -10%,
+            color-mix(in srgb, var(--accent2) 18%, transparent),
+            transparent 55%),
+        radial-gradient(900px 600px at 15% 10%,
+            color-mix(in srgb, var(--accent) 12%, transparent),
+            transparent 55%),
+        var(--bg);
+}
+
+/* ---------- Work Explorer Overlay ---------- */
+.workOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+}
+
+.workOverlay.is-open {
+    display: block;
+}
+
+.workOverlay__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+}
+
+.workOverlay__panel {
+    position: absolute;
+    top: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, calc(100vw - 24px));
+    height: min(86vh, 900px);
+    border-radius: 24px;
+    background: rgba(16, 18, 22, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.workOverlay__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 18px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.workOverlay__kicker {
+    opacity: 0.7;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.workOverlay__title h2 {
+    margin: 2px 0 0;
+    font-size: 22px;
+}
+
+.workOverlay__actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.iconBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+    cursor: pointer;
+}
+
+.chipBtn {
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+    cursor: pointer;
+}
+
+.workOverlay__controls {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 2fr;
+    gap: 12px;
+    padding: 12px 18px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.controlGroup {
+    display: grid;
+    gap: 8px;
+}
+
+.controlLabel {
+    font-size: 12px;
+    opacity: 0.75;
+}
+
+.controlInput,
+.controlSelect {
+    height: 42px;
+    padding: 0 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+    outline: none;
+}
+
+.controlGroup--tags {
+    grid-column: 1 / -1;
+}
+
+.filterRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filterChip {
+    padding: 9px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.filterChip:hover {
+    transform: translateY(-1px);
+}
+
+.filterChip[aria-pressed="true"] {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.workOverlay__gridWrap {
+    padding: 16px 18px 18px;
+    height: calc(100% - 140px);
+    overflow: auto;
+}
+
+.workGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 900px) {
+    .workOverlay__controls {
+        grid-template-columns: 1fr;
+    }
+
+    .workGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.workCard {
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, opacity 180ms ease;
+    transform: translateY(0);
+}
+
+.workCard:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.20);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.workCard.is-hidden {
+    opacity: 0;
+    transform: scale(0.98);
+    pointer-events: none;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+}
+
+.workCard__pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.pill {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.18);
+    opacity: 0.9;
+}
+
+.workCard__title {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.workCard__sub {
+    margin: 0 0 14px;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.workCard__cta {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    opacity: 0.9;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .workCard,
+    .filterChip {
+        transition: none;
+    }
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    background: #050607;
+}
+
+#macCanvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+#macCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+header,
+main,
+.modal,
+.portal-x,
+.transition {
+    position: relative;
+    z-index: 1;
+}
+
+.macStage {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#macCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* =========================
+   Liquid Glass 2.0 (drop-in)
+   ========================= */
+
+/* Glass tokens */
+:root {
+    --glass-bg: rgba(255, 255, 255, .06);
+    --glass-bg-strong: rgba(255, 255, 255, .10);
+    --glass-border: rgba(255, 255, 255, .14);
+    --glass-border-soft: rgba(255, 255, 255, .10);
+    --glass-shadow: 0 22px 70px rgba(0, 0, 0, .38);
+    --glass-blur: 18px;
+    --glass-blur-strong: 28px;
+
+    /* highlight “sheen” */
+    --sheen-x: 50%;
+    --sheen-y: 35%;
+}
+
+/* If you have theme attrs, keep them; this just improves glass readability */
+html[data-theme="light"] {
+    --glass-bg: rgba(0, 0, 0, .04);
+    --glass-bg-strong: rgba(0, 0, 0, .06);
+    --glass-border: rgba(0, 0, 0, .10);
+    --glass-border-soft: rgba(0, 0, 0, .08);
+    --glass-shadow: 0 18px 60px rgba(0, 0, 0, .18);
+}
+
+/* Ambient background enhancement */
+.ambient {
+    position: fixed;
+    inset: -20%;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(1200px 900px at 20% 30%, rgba(120, 255, 240, .12), transparent 60%),
+        radial-gradient(900px 700px at 80% 35%, rgba(170, 120, 255, .14), transparent 55%),
+        radial-gradient(800px 600px at 55% 85%, rgba(255, 160, 120, .10), transparent 60%);
+    filter: blur(18px) saturate(120%);
+    opacity: .95;
+    transform: translateZ(0);
+}
+
+/* Add subtle film grain (pure CSS) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: .10;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, .03) 0, rgba(255, 255, 255, .03) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode: overlay;
+}
+
+/* A single utility you can apply to anything glassy */
+.glass {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: 20px;
+    backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+    box-shadow: var(--glass-shadow);
+    transform: translateZ(0);
+    overflow: hidden;
+}
+
+/* Sheen highlight that follows cursor (JS updates variables) */
+.glass::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background:
+        radial-gradient(600px 420px at var(--sheen-x) var(--sheen-y),
+            rgba(255, 255, 255, .20),
+            rgba(255, 255, 255, .06) 35%,
+            rgba(255, 255, 255, 0) 62%);
+    opacity: .9;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+}
+
+/* Inner edge “wet glass” ring */
+.glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .14),
+        inset 0 0 0 1px rgba(255, 255, 255, .05);
+    pointer-events: none;
+}
+
+/* Make your existing UI feel glassy without rewriting HTML */
+.header {
+    background: rgba(10, 12, 16, .45);
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(130%);
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(130%);
+}
+
+/* Cards become glass */
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border-soft);
+    backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(125%);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, .28);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Specular highlight on cards */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background:
+        radial-gradient(520px 380px at var(--sheen-x) var(--sheen-y),
+            rgba(255, 255, 255, .18),
+            rgba(255, 255, 255, .06) 36%,
+            transparent 62%);
+    opacity: .85;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+/* Hover: slightly more fluid / lifted */
+.card {
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, .18);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, .34);
+}
+
+/* Pills look like little glass droplets */
+.pill {
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+}
+
+/* Buttons: glassy, tactile */
+.btn {
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
+
+.btn--ghost {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.btn--ghost:hover {
+    background: rgba(255, 255, 255, .09);
+}
+
+.btn--primary {
+    border: 1px solid rgba(255, 255, 255, .14);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, .24);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .glass {
+        transition: none !important;
+    }
+}
+
+/* =========================
+   Window Reflections (Liquid Glass)
+   ========================= */
+
+/* Any element you want reflective gets this class */
+.reflect {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+/* Specular reflection layer */
+.reflect::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease, transform 180ms ease;
+    mix-blend-mode: screen;
+
+    /* Reflection “beam” + soft bloom */
+    background:
+        radial-gradient(520px 360px at var(--rx, 50%) var(--ry, 35%),
+            rgba(255, 255, 255, .20),
+            rgba(255, 255, 255, .08) 32%,
+            rgba(255, 255, 255, 0) 62%),
+        linear-gradient(115deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, .10) 38%,
+            rgba(255, 255, 255, 0) 58%);
+}
+
+/* Subtle edge glint */
+.reflect::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: .65;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        inset 0 0 0 1px rgba(255, 255, 255, .05);
+}
+
+/* Activate on hover/focus */
+.reflect:hover::before,
+.reflect:focus-within::before {
+    opacity: .95;
+}
+
+/* Gentle “tilt” of the reflection only (not the card) */
+.reflect:hover::before {
+    transform: translate3d(calc(var(--rtiltX, 0px) * 1), calc(var(--rtiltY, 0px) * 1), 0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .reflect::before {
+        transition: none;
+    }
+}
+
+/* ==============================
+   Case Overlay (fullscreen card)
+   ============================== */
+
+.caseOverlay[hidden] {
+    display: none !important;
+}
+
+.caseOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.caseOverlay__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+body.isOverlayOpen {
+    overflow: hidden;
+}
+
+/* The expanded card */
+.caseExpanded {
+    position: relative;
+    width: min(920px, 100%);
+    max-height: min(86vh, 900px);
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(18, 18, 20, 0.70);
+    box-shadow: 0 30px 120px rgba(0, 0, 0, 0.55);
+}
+
+/* Image hero */
+.caseHero {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.caseHero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 320ms ease;
+}
+
+.caseHero__img--primary {
+    opacity: 1;
+}
+
+.caseHero__img--secondary {
+    opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .caseHero:hover .caseHero__img--primary {
+        opacity: 0;
+    }
+
+    .caseHero:hover .caseHero__img--secondary {
+        opacity: 1;
+    }
+}
+
+.caseHero.isAlt .caseHero__img--primary {
+    opacity: 0;
+}
+
+.caseHero.isAlt .caseHero__img--secondary {
+    opacity: 1;
+}
+
+
+/* ==============================
+   Liquid Glass — Case Expanded
+   ============================== */
+
+/* Make the overlay feel like glass in a dark room */
+.caseOverlay__backdrop {
+    background:
+        radial-gradient(1200px 800px at var(--sheen-x, 50%) var(--sheen-y, 35%),
+            rgba(255, 255, 255, 0.08), transparent 55%),
+        rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+}
+
+/* Glass card */
+.caseExpanded {
+    /* “Glass” base */
+    background: rgba(18, 18, 20, 0.52);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+    /* Edge + depth */
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+        0 30px 120px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* Specular highlight that “moves” with cursor (uses your --sheen-x/--sheen-y vars) */
+.caseExpanded::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        radial-gradient(800px 480px at var(--sheen-x, 50%) var(--sheen-y, 35%),
+            rgba(255, 255, 255, 0.22),
+            rgba(255, 255, 255, 0.06) 38%,
+            transparent 62%);
+
+    mix-blend-mode: screen;
+    opacity: 0.85;
+}
+
+/* Thin “glass rim” */
+.caseExpanded::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.04) 35%,
+            rgba(255, 255, 255, 0.02) 70%,
+            rgba(255, 255, 255, 0.10));
+
+    opacity: 0.55;
+}
+
+/* Make inner content sit above the overlays */
+.caseExpanded>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: make the hero feel integrated into the glass */
+.caseHero {
+    filter: saturate(1.08) contrast(1.02);
+}
+
+/* Optional: a subtle top highlight line under the hero image */
+.caseHero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.14);
+    pointer-events: none;
+}
+
+.caseOverlay .caseExpanded {
+    transform: translateY(6px) scale(0.99);
+    opacity: 0;
+    transition: transform 420ms cubic-bezier(.2, .8, .2, 1), opacity 240ms ease;
+}
+
+.caseOverlay:not([hidden]) .caseExpanded {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* =========================
+   Siri-style Glow (CSS-only)
+   ========================= */
+
+.caseExpanded {
+    position: relative;
+    overflow: hidden;
+    /* important so glow stays inside */
+}
+
+/* The glow layer */
+.siriGlow {
+    position: absolute;
+    inset: -40%;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 0;
+
+    /* Multiple blobs */
+    background:
+        radial-gradient(closest-side at calc(var(--sheen-x, 50%) * 1%) calc(var(--sheen-y, 35%) * 1%),
+            rgba(120, 220, 255, 0.55), transparent 60%),
+        radial-gradient(closest-side at 35% 60%,
+            rgba(170, 120, 255, 0.45), transparent 62%),
+        radial-gradient(closest-side at 70% 40%,
+            rgba(255, 140, 200, 0.42), transparent 62%),
+        radial-gradient(closest-side at 55% 80%,
+            rgba(120, 255, 200, 0.35), transparent 62%);
+
+    filter: blur(42px) saturate(170%);
+    transform: translateZ(0);
+    mix-blend-mode: screen;
+
+    animation: siriFloat 7.5s ease-in-out infinite alternate;
+}
+
+/* Keep your content above the glow */
+.caseExpanded>*:not(.siriGlow) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Subtle motion (not a rave) */
+@keyframes siriFloat {
+    0% {
+        transform: translate3d(-1.5%, -1.2%, 0) scale(1.02);
+    }
+
+    50% {
+        transform: translate3d(1.8%, 1.3%, 0) scale(1.05);
+    }
+
+    100% {
+        transform: translate3d(-0.6%, 2.0%, 0) scale(1.03);
+    }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .siriGlow {
+        animation: none;
+    }
+}
+
+.siriGlow::after {
+    content: "";
+    position: absolute;
+    inset: 30%;
+    border-radius: 999px;
+
+    background: conic-gradient(from 180deg,
+            rgba(120, 220, 255, 0.0),
+            rgba(120, 220, 255, 0.45),
+            rgba(170, 120, 255, 0.45),
+            rgba(255, 140, 200, 0.42),
+            rgba(120, 255, 200, 0.38),
+            rgba(120, 220, 255, 0.0));
+
+    filter: blur(18px);
+    opacity: 0.65;
+    mix-blend-mode: screen;
+
+    animation: siriPulse 3.8s ease-in-out infinite;
+}
+
+@keyframes siriPulse {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: scale(1.00);
+        opacity: 0.60;
+    }
+}
+
+/* =====================================
+   Siri Glow — Card Border Only
+   ===================================== */
+
+.caseExpanded {
+    /* existing glass styles stay */
+    isolation: isolate;
+    /* keeps blend modes contained */
+}
+
+/* OUTER GLOW (lives outside the card) */
+.caseExpanded::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    /* glow lives just outside border */
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(120px 120px at calc(var(--sheen-x, 50) * 1%) calc(var(--sheen-y, 35) * 1%),
+            rgba(120, 220, 255, 0.65),
+            transparent 60%),
+        conic-gradient(from 180deg,
+            rgba(120, 220, 255, 0.35),
+            rgba(170, 120, 255, 0.35),
+            rgba(255, 140, 200, 0.30),
+            rgba(120, 255, 200, 0.30),
+            rgba(120, 220, 255, 0.35));
+
+    filter: blur(18px) saturate(160%);
+    opacity: 0.75;
+    mix-blend-mode: screen;
+
+    animation: siriBorderDrift 9s ease-in-out infinite alternate;
+}
+
+/* INNER RIM (thin energy line) */
+.caseExpanded::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.35),
+            rgba(255, 255, 255, 0.08) 40%,
+            rgba(255, 255, 255, 0.02) 70%,
+            rgba(255, 255, 255, 0.18));
+
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+
+    padding: 1px;
+    opacity: 0.65;
+}
+
+/* Slow, organic motion */
+@keyframes siriBorderDrift {
+    0% {
+        transform: translate(-1%, -0.5%) scale(1.01);
+    }
+
+    50% {
+        transform: translate(1.2%, 0.8%) scale(1.04);
+    }
+
+    100% {
+        transform: translate(-0.6%, 1.4%) scale(1.02);
+    }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .caseExpanded::before {
+        animation: none;
+    }
+}
+
+.caseHero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.caseHero__video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.caseExpanded {
+    position: relative;
+    /* needed for absolute close button */
+}
+
+.caseClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(20, 20, 24, .35);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    color: rgba(255, 255, 255, .92);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .10);
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.caseClose:hover {
+    transform: translateY(-1px);
+    background: rgba(30, 30, 36, .45);
+    border-color: rgba(255, 255, 255, .26);
+}
+
+.caseClose:active {
+    transform: translateY(0px) scale(.98);
+}
+
+.caseClose:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, .55);
+    outline-offset: 3px;
+}
+
+.caseClose::after {
+    content: "Esc";
+    position: absolute;
+    right: 54px;
+    font-size: 12px;
+    letter-spacing: .02em;
+    color: rgba(255, 255, 255, .55);
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(20, 20, 24, .28);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity .15s ease, transform .15s ease;
+    pointer-events: none;
+}
+
+.caseClose:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.caseExpanded {
+    position: relative;
+}
+
+/* Floating close button */
+.caseClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(20, 20, 24, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 22px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.caseClose:hover {
+    transform: translateY(-1px);
+    background: rgba(30, 30, 36, 0.45);
+    border-color: rgba(255, 255, 255, 0.26);
+}
+
+.caseClose:active {
+    transform: scale(0.96);
+}
+
+.caseClose:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 3px;
+}
+
+/* =========================
+   Case Overlay — Close Button
+   ========================= */
+
+.caseExpanded {
+    position: relative;
+    /* anchor for absolute close */
+}
+
+.caseClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 50;
+    /* stay above glow + hero */
+
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(20, 20, 24, 0.35);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 22px;
+    line-height: 1;
+
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.caseClose:hover {
+    transform: translateY(-1px);
+    background: rgba(30, 30, 36, 0.45);
+    border-color: rgba(255, 255, 255, 0.26);
+}
+
+.caseClose:active {
+    transform: scale(0.96);
+}
+
+.caseClose:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 3px;
+}
+
+/* Optional “Esc” hint */
+.caseClose::after {
+    content: "Esc";
+    position: absolute;
+    right: 54px;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(20, 20, 24, 0.28);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+}
+
+.caseClose:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mobile safe-area nicety */
+@media (max-width: 600px) {
+    .caseClose {
+        top: calc(12px + env(safe-area-inset-top, 0px));
+        right: calc(12px + env(safe-area-inset-right, 0px));
+    }
+}
+
+/* FORCE close button to top-right (final override) */
+.caseExpanded {
+    position: relative !important;
+}
+
+.caseClose {
+    position: absolute !important;
+    top: 16px !important;
+
+    right: 16px !important;
+    left: auto !important;
+    /* <-- this is the key */
+    bottom: auto !important;
+
+    z-index: 999 !important;
+    /* above glow/hero */
+
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+}
+
+/* Contact Email CTA */
+.contact .btn,
+.contact .btn--primary {
+    width: fit-content;
+    /* 👈 shrink to content */
+    min-width: unset;
+    padding-inline: 50px;
+    /* controls length */
+}
+
+/* =========================
+   About – Portrait (image only)
+   ========================= */
+
+.section--split .portraitCard {
+    max-width: 260px;
+    margin-left: auto;
+    margin-top: -24px;
+    text-align: center;
+}
+
+.section--split .portraitMedia {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.section--split .portraitMedia img {
+    width: 100%;
+    height: auto;
+    /* 🔑 let image define height */
+    display: block;
+    border-radius: 20px;
+}
+
+/* Meta below image */
+.section--split .portraitMeta {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* =========================
+   About — Small Highlight Bubbles
+   (scoped + non-invasive)
+   ========================= */
+
+#about .aboutBubbles {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    align-items: center;
+}
+
+#about .aboutBubble {
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    box-shadow: var(--shadow-md);
+    max-width: 220px;
+}
+
+#about .aboutBubble__kpi {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+}
+
+#about .aboutBubble__label {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+/* One line on desktop, wraps on small screens */
+.portraitRole {
+    white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+    .portraitRole {
+        white-space: normal;
+    }
+}
+
+/* Allow role text to fully render on one line */
+.portraitRole {
+    white-space: nowrap;
+    max-width: none;
+}
+
+.section--split .portraitMeta {
+    width: 100%;
+}
+
+/* --- Portrait role: keep full "Engineer" on one line (no clipping) --- */
+.section--split .portraitCard {
+    max-width: 320px;
+    /* was 260px — too tight */
+}
+
+.section--split .portraitMeta {
+    width: 100%;
+}
+
+.section--split .portraitRole {
+    white-space: nowrap;
+    overflow: visible;
+    /* important: don’t clip the text */
+    font-size: 13px;
+    /* slight downsize to guarantee fit */
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand__logo {
+    width: 18px;
+    height: 18px;
+    opacity: 0.92;
+    transform: translateY(-0.5px);
+}
+
+/* ================================
+   Chrome glass rendering fix
+   ================================ */
+.ambient,
+.ambient::before,
+.ambient::after {
+    pointer-events: none;
+}
+
+/* =========================================================
+   Progressive Enhancement for Glass (Safari/modern only)
+   - Baseline: readable + clean (all browsers)
+   - Enhanced: blur glass + richer lighting (only when supported)
+   ========================================================= */
+
+/* ---------- BASELINE (works everywhere) ---------- */
+:where(.glass, .card, .surface, .header, .drawer, .modal, .panel, .chip, .btn) {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Keep ambient subtle by default (prevents Chrome “soot”) */
+:where(.ambient) {
+    opacity: 0.22;
+    filter: none;
+}
+
+/* ---------- ENHANCED (only if blur is supported) ---------- */
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+    :where(.glass, .card, .surface, .header, .drawer, .modal, .panel, .chip, .btn) {
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+        background: rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    :where(.ambient) {
+        opacity: 0.40;
+    }
+}
+
+/* ---------- Accessibility: reduce transparency ---------- */
+@media (prefers-reduced-transparency: reduce) {
+    :where(.glass, .card, .surface, .header, .drawer, .modal, .panel, .chip, .btn) {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(20, 20, 22, 0.85) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    :where(.ambient) {
+        display: none !important;
+    }
+}
+
+/* Mobile: prevent Lego image from covering the chips/boxes */
+@media (max-width: 480px) {
+
+    /* Make the hero flow normally */
+    .hero {
+        overflow: visible;
+    }
+
+    /* Put chips/boxes above anything decorative */
+    .hero .chip-row,
+    .hero .chips,
+    .hero .tags,
+    .hero .traits,
+    .hero .pill-row {
+        position: relative;
+        z-index: 5;
+    }
+
+    /* Push the Lego image BELOW the chips and remove overlap styling */
+    .hero .hero__art,
+    .hero .hero__media,
+    .hero .hero__visual,
+    .hero .lego,
+    .hero img {
+        position: relative !important;
+        z-index: 1 !important;
+        transform: none !important;
+        margin-top: 16px !important;
+    }
+}
+
+/* ===============================
+   Mobile fix: stop Lego overlapping trait boxes
+   =============================== */
+@media (max-width: 480px) {
+
+    /* Give the trait row breathing room above the image */
+    .hero :where(.traits, .chips, .tags, .pill-row) {
+        position: relative;
+        z-index: 3;
+        margin-bottom: 16px;
+    }
+
+    /* Force the Lego container back into normal flow on mobile */
+    .hero :where(.hero__art, .hero__media, .hero__visual, .hero__figure, .hero__image, .hero__photo,
+        .avatar, .avatar-card, .lego, .lego-card, .portrait, .portrait-card) {
+        position: relative !important;
+        inset: auto !important;
+        /* cancels top/left/right/bottom */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        /* cancels translateY overlaps */
+        margin-top: 12px !important;
+        z-index: 1 !important;
+    }
+
+    /* Safety: if the image itself is positioned/transformed */
+    .hero img {
+        position: relative !important;
+        transform: none !important;
+    }
+}
+
+/* Mobile: keep Lego portrait from overlapping the trait boxes */
+@media (max-width: 480px) {
+    .portraitMedia {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        /* kills translateY overlap */
+        margin-top: 16px !important;
+        /* adds breathing room */
+        z-index: 0 !important;
+    }
+
+    .portraitMedia img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform: none !important;
+        /* in case the img is transformed */
+    }
+}
+
+/* Mobile: center the Lego portrait card cleanly */
+@media (max-width: 480px) {
+    .section--split .portraitCard {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0 !important;
+        /* cancel negative lift */
+        display: flex;
+        justify-content: center;
+    }
+
+    .portraitMedia {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* Mobile: make the portrait card larger */
+@media (max-width: 480px) {
+    .section--split .portraitCard {
+        max-width: min(92vw, 520px) !important;
+        /* was 260px */
+        width: 92vw !important;
+    }
+
+    .section--split .portraitMedia {
+        width: 100% !important;
+    }
+
+    .section--split .portraitMedia img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Mobile: stack portrait image above text (no side-by-side) */
+@media (max-width: 480px) {
+    .section--split .portraitCard {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        text-align: center !important;
+        width: 92vw !important;
+        max-width: min(92vw, 520px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 0 !important;
+    }
+
+    .section--split .portraitMedia {
+        width: 100% !important;
+        max-width: 360px !important;
+        /* keeps image nice, not massive */
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .section--split .portraitMeta {
+        width: 100% !important;
+    }
+}
+
+/* ===============================
+   Launch safety: overlays OFF by default
+   (prevents Chrome/mobile “dark veil”)
+   =============================== */
+#portalX,
+#transition,
+.ambient {
+    display: none !important;
+}
+
+/* ===============================
+   Kill the dark veil (all overlays)
+   =============================== */
+#transition,
+#portalX,
+.portal-x,
+.portal-x__veil,
+.portal-x__ring {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Safety: if any global pseudo-overlay exists */
+body::before,
+main::before,
+.page::before,
+.shell::before,
+.hero::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* =========================================
+   Glass progressive enhancement (NO UA sniffing)
+   - If blur is supported, use full glass
+   - If not, fall back to flat translucent surfaces
+   ========================================= */
+
+/* Base (safe everywhere) */
+.glass,
+.card,
+.surface,
+.header,
+.modal__panel,
+.caseExpanded {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Only enable blur glass when supported */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+
+    .glass,
+    .card,
+    .surface,
+    .header,
+    .modal__panel,
+    .caseExpanded {
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* If blur is NOT supported (or is unreliable), force flat mode */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    .glass,
+    .card,
+    .surface,
+    .header,
+    .modal__panel,
+    .caseExpanded {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.07) !important;
+    }
+
+    /* kill any ambient/veil style in fallback mode */
+    .ambient,
+    #portalX,
+    #transition {
+        display: none !important;
+    }
+}
+
+/* Make hero text readable everywhere */
+.hero h1,
+.hero .headline {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.hero p,
+.hero .subhead {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-theme="light"] {
+    --fg: rgba(255, 255, 255, 0.92) !important;
+    --muted: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Keep ALL text readable even if data-theme="light" */
+html[data-theme="light"] body {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html[data-theme="light"] .muted,
+html[data-theme="light"] p,
+html[data-theme="light"] .subhead,
+html[data-theme="light"] .kicker,
+html[data-theme="light"] .nav a {
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+/* Ambient ON by default (Safari, iOS Safari) */
+.ambient {
+    display: block;
+}
+
+/* Chrome: turn ambient OFF because blur is unstable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .ambient {
+        display: none;
+    }
+}

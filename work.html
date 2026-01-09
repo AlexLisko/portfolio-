@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Alex Lisko — Work</title>
+    <meta name="description" content="Selected work by Alex Lisko." />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="portal-x" id="portalX" aria-hidden="true">
+        <div class="portal-x__veil"></div>
+        <div class="portal-x__ring"></div>
+    </div>
+
+    <div class="transition" id="transition" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header">
+        <div class="header__inner">
+            <a class="brand" href="./index.html" aria-label="Back to home">
+                <img src="./assets/al-monogram.svg" alt="" class="brand__logo" aria-hidden="true" />
+                <span class="brand__text">Alex Lisko</span>
+            </a>
+
+            <nav class="nav" aria-label="Primary">
+                <a class="nav__link" href="./work.html" aria-current="page">Work</a>
+                <a class="nav__link" href="./index.html#about">About</a>
+                <a class="nav__link" href="./index.html#contact">Contact</a>
+            </nav>
+
+            <div class="controls">
+                <a class="btn btn--ghost" href="./index.html">Home</a>
+                <button class="btn btn--primary" id="openResume" type="button">View Resume</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section">
+            <div class="section__head">
+                <h2 class="section__title">Selected Work</h2>
+                <p class="section__desc">Deep dives, artifacts, decisions, and outcomes.</p>
+            </div>
+
+            <div class="grid">
+                <!-- Project 01 -->
+                <article class="card case" data-case="visionpro">
+                    <div class="case__meta">
+                        <span class="pill">Human Factors</span>
+                        <span class="pill">Wearables</span>
+                        <span class="pill">Product Launch</span>
+                    </div>
+
+                    <h3 class="case__title">Launching the Apple Vision Pro Dual Knit Band</h3>
+                    <p class="case__desc">Validating a comfort-critical wearable component for the Vision Pro.</p>
+
+                    <button class="btn btn--ghost case__open" type="button" data-open-case="visionpro">
+                        Open case →
+                    </button>
+                </article>
+
+                <!-- Project 02 -->
+                <article class="card case" data-case="genaiqa">
+                    <div class="case__meta">
+                        <span class="pill">Lab Design</span>
+                        <span class="pill">UX Design Methods</span>
+                        <span class="pill">3D Design</span>
+                    </div>
+
+                    <h3 class="case__title">Led the Design and Launch of Two Research Lab Spaces</h3>
+                    <p class="case__desc">Building scalable research environments to support research at Apple.</p>
+
+                    <button class="btn btn--ghost case__open" type="button" data-open-case="genaiqa">
+                        Open case →
+                    </button>
+                </article>
+
+                <!-- Project 03 -->
+                <article class="card case" data-case="universal">
+                    <div class="case__meta">
+                        <span class="pill">User Research</span>
+                        <span class="pill">Qualitative UX Methods</span>
+                    </div>
+
+                    <h3 class="case__title">Apple Intelligence Siri</h3>
+                    <p class="case__desc">Contributed towards 5+ key features for the Apple Intelligence launch (2024).
+                    </p>
+
+                    <button class="btn btn--ghost case__open" type="button" data-open-case="universal">
+                        Open case →
+                    </button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal (still used for Resume / Intro if your app.js opens it) -->
+    <div class="modal" id="modal" hidden>
+        <div class="modal__backdrop" data-close="true"></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal__head">
+                <h3 class="modal__title" id="modalTitle">Title</h3>
+                <button class="iconbtn" id="closeModal" type="button" aria-label="Close">✕</button>
+            </div>
+            <div class="modal__body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Expanded Case Overlay (reused for all 3 projects via app.js OVERLAY_CASES) -->
+    <div class="caseOverlay" id="caseOverlay" hidden>
+        <div class="caseOverlay__backdrop" data-close-overlay></div>
+
+        <section class="caseExpanded" role="dialog" aria-modal="true" aria-labelledby="caseTitle" tabindex="-1">
+            <!-- NEW: Top-right Close -->
+            <button class="caseClose" type="button" data-close-overlay aria-label="Close case">×</button>
+
+            <!-- Siri-style glow layer -->
+            <div class="siriGlow" aria-hidden="true"></div>
+
+            <!-- Hybrid hero: images OR YouTube video (app.js can toggle) -->
+            <div class="caseHero" data-hero>
+                <!-- Image mode -->
+                <img class="caseHero__img caseHero__img--primary" src="" alt="" loading="lazy" decoding="async" />
+                <img class="caseHero__img caseHero__img--secondary" src="" alt="" loading="lazy" decoding="async" />
+
+                <!-- Video mode -->
+                <div class="caseHero__video" hidden>
+                    <iframe id="caseVideo" title="Case study video" loading="lazy" frameborder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="caseExpanded__inner">
+                <div class="caseExpanded__kicker">Project</div>
+
+                <h2 class="caseExpanded__title" id="caseTitle">Case title</h2>
+
+                <p class="caseExpanded__subtitle">
+                    Case subtitle
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script src="./app.js" defer></script>
+</body>
+
+</html>
