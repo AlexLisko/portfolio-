@@ -1,0 +1,1144 @@
+/* ============================
+   RESET & GLOBAL
+   ============================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #e8e6e3;
+  color: #1a1a1a;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* ============================
+   HEADER / NAV (shared across all pages)
+   ============================ */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.site-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* ============================
+   WORK PAGE (index.html)
+   ============================ */
+.intro {
+  margin-bottom: 40px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 24px;
+  margin-bottom: 24px;
+}
+
+.project-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card:hover .caption {
+  text-decoration: underline;
+}
+
+.thumbnail {
+  background-color: #c4c4c4;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+.section-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 64px 0 20px;
+  padding-top: 24px;
+  border-top: 2px solid #1a1a1a;
+}
+
+/* ============================
+   PROJECT DETAIL PAGES (shared: research-labs.html, AI_Siri.html, beats.html)
+   ============================ */
+.back-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.project-hero {
+  background-color: #c4c4c4;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 32px;
+}
+
+.press-release-btn {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  text-decoration: none;
+  border: 1px solid #1a1a1a;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+}
+
+.press-release-btn:hover {
+  background: #1a1a1a;
+  color: #e8e6e3;
+}
+
+.project-body {
+  max-width: 640px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.detail-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 28px 0 8px;
+}
+
+.project-body p {
+  margin-bottom: 12px;
+}
+
+.project-tagline {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #5a5a5a;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.project-image-block {
+  margin: 40px 0;
+}
+
+.project-image {
+  background-color: #c4c4c4;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+}
+
+.project-image-caption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #5a5a5a;
+  font-style: italic;
+}
+
+/* ============================
+   BEATS PAGE (beats.html) — page-specific overrides
+   ============================ */
+.project-hero.video-contain {
+  background-color: #1a1a1a;
+  object-fit: contain;
+}
+
+.project-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.meta-card {
+  border: 2px solid #c4c4c4;
+  padding: 16px;
+}
+
+.meta-label {
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: #5a5a5a;
+  margin-bottom: 8px;
+}
+
+.meta-value {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.figma-callout {
+  border-left: 3px solid #1a1a1a;
+  padding: 12px 16px;
+  margin: 32px 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #444;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.overview-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin: 40px 0;
+}
+
+.overview-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 4px 0 16px;
+  line-height: 1.3;
+}
+
+.overview-text p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.overview-media video,
+.overview-media img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #1a1a1a;
+}
+
+.overview-media img.media-contain {
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: #1a1a1a;
+}
+
+.sub-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.experience-subsection {
+  margin: 40px 0;
+}
+
+.experience-subsection p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.phone-frame-large {
+  background: #1a1a1a;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-frame-large video {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+}
+
+.sketchbook {
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.sketchbook-pages {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  perspective: 2000px;
+}
+
+.sketchbook-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  border: 1px solid #1a1a1a;
+  background: #e8e6e3;
+}
+
+.sketchbook-page.flipped {
+  transform: rotateY(-180deg);
+}
+
+.sketch-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c4c4c4;
+  font-size: 1.2rem;
+  color: #5a5a5a;
+  backface-visibility: hidden;
+}
+
+.sketch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+.sketchbook-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.sketchbook-btn {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.sketchbook-btn:hover {
+  background: #1a1a1a;
+  color: #e8e6e3;
+}
+
+.sketchbook-counter {
+  font-size: 0.8rem;
+  color: #5a5a5a;
+}
+
+@media (max-width: 700px) {
+  .project-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .overview-section {
+    grid-template-columns: 1fr;
+  }
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.principle-card {
+  background: transparent;
+  border: 2px solid #1a1a1a;
+  color: #1a1a1a;
+  border-radius: 12px;
+  padding: 24px;
+}
+.principle-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.principle-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+}
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0 40px;
+}
+
+.pull-quote {
+  background: #1a1a1a;
+  color: #e8e6e3;
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 40px 0;
+}
+
+.reflection-text {
+  margin-left: 32px;
+  border-left: 2px solid #c4c4c4;
+  padding-left: 24px;
+}
+
+.reflection-text p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* ============================
+   PRESS PAGE (press.html)
+   ============================ */
+.press-intro {
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.press-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #c4c4c4;
+  color: #555;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 24px;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 32px;
+}
+
+.press-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.press-thumb {
+  background-color: #c4c4c4;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+}
+
+.press-caption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.press-card:hover .press-caption {
+  text-decoration: underline;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* ============================
+   GARMIN PAGE (garmin.html) — page-specific overrides
+   ============================ */
+.garmin-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.garmin-image-panel {
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.garmin-image-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.garmin-gauge-placeholder {
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  background: #c4c4c4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #5a5a5a;
+  border-radius: 8px;
+}
+
+.garmin-image-caption {
+  font-size: 0.8rem;
+  color: #5a5a5a;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.garmin-info-panel {
+  border: px solid #c4c4c4;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.garmin-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  border: 1px solid #1a1a1a;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+}
+
+.garmin-info-block p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.garmin-cta {
+  display: block;
+  text-align: center;
+  background: #1a1a1a;
+  color: #e8e6e3;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.garmin-cta:hover {
+  opacity: 0.85;
+}
+
+.garmin-section {
+  margin: 48px 0;
+}
+
+.garmin-why-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.garmin-why-text p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.garmin-label-small {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: #5a5a5a;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.garmin-info-block {
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 16px;
+}
+
+.garmin-info-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.garmin-key-insight {
+  background: #1a1a1a;
+  color: #e8e6e3;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  margin: 48px 0;
+}
+
+.garmin-key-insight-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #999;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.garmin-key-insight-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.garmin-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.garmin-approach-card {
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.garmin-approach-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #1a1a1a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.garmin-approach-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.garmin-approach-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.findings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.finding-row {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.finding-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.finding-number {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #5a5a5a;
+}
+
+.finding-row p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 6px;
+}
+
+.garmin-layout-stacked {
+  margin-top: 32px;
+}
+
+.garmin-info-panel-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.garmin-info-panel-row .garmin-info-block {
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.garmin-overview-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 700px) {
+  .garmin-why-grid {
+    grid-template-columns: 1fr;
+  }
+  .garmin-approach-grid {
+    grid-template-columns: 1fr;
+  }
+  .garmin-info-panel-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================
+   RESUME PAGE (resume.html)
+   ============================ */
+.resume-intro {
+  text-align: left;
+  margin-bottom: 12px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  max-width: 640px;
+}
+
+.resume-download {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 2px;
+}
+
+.resume-list {
+  border-top: 2px solid #1a1a1a;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.resume-list .section-heading {
+  border-top: none;
+  padding-top: 0;
+  margin: 0 0 20px;
+}
+
+.resume-list .section-heading:not(:first-child) {
+  border-top: 2px solid #1a1a1a;
+  padding-top: 24px;
+  margin-top: 40px;
+}
+
+.resume-entry {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.resume-mark {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.resume-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.resume-company-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.resume-dates {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #444;
+}
+
+.resume-role-block {
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 2px solid #c4c4c4;
+}
+
+.resume-role-block:last-child {
+  margin-bottom: 0;
+}
+
+.resume-role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  padding: 6px 0;
+}
+
+.resume-role-header::-webkit-details-marker {
+  display: none;
+}
+
+.resume-role-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.chevron {
+  color: #e8e6e3;
+  background: #1a1a1a;
+  font-size: 0.65rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chevron::before {
+  content: "▸";
+  display: inline-block;
+  transition: transform 0.15s ease;
+  margin-left: 1px;
+}
+
+details[open] .chevron::before {
+  transform: rotate(90deg);
+}
+
+.resume-role {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+}
+
+.resume-role-dates {
+  font-size: 0.75rem;
+  color: #5a5a5a;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.resume-location {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: #5a5a5a;
+  margin: 6px 0 10px;
+}
+
+.resume-bullets {
+  list-style: none;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.resume-bullets li {
+  margin-bottom: 8px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.resume-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #888;
+}
+
+.education-degree-title {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.education-school {
+  font-size: 0.85rem;
+  color: #444;
+  margin: 4px 0 10px;
+}
+
+/* ============================
+   ABOUT PAGE (about.html)
+   ============================ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+
+.about-photo-wrap {
+  position: sticky;
+  top: 40px;
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid #1a1a1a;
+}
+
+.about-bio {
+  max-width: none;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.about-bio p {
+  margin-bottom: 16px;
+}
+
+.about-bio p:last-child {
+  margin-bottom: 0;
+}
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #c4c4c4;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-number {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #5a5a5a;
+  margin-top: 4px;
+}
+
+.about-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #5a5a5a;
+}
+
+@media (max-width: 700px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+  .about-photo-wrap {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-photo {
+    width: 240px;
+  }
+  .about-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+  }
+}
+/* ============================
+   PHILOSOPHY PAGE (philosophy.html)
+   ============================ */
+.philosophy-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.philosophy-title {
+  font-size: 1rem;
+  border-bottom: 2px solid #1a1a1a;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.philosophy-hint {
+  font-size: 0.8rem;
+  color: #5a5a5a;
+  margin-top: 8px;
+}
+
+.manifesto-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manifesto-row {
+  cursor: pointer;
+  text-align: center;
+  padding: 32px 0;
+}
+
+.manifesto-row:hover .manifesto-line {
+  opacity: 0.7;
+}
+
+.manifesto-line {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: opacity 0.3s ease;
+}
+
+.manifesto-underline {
+  width: 80px;
+  height: 2px;
+  background: #c4c4c4;
+  margin: 16px auto 0;
+}
+
+.why-reveal {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #1a1a1a;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
+  margin-top: 0;
+}
+
+.manifesto-row.revealed .why-reveal {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 16px;
+}
+
+.manifesto-divider {
+  border-top: 2px solid #1a1a1a;
+  margin: 24px 0 40px;
+}
+
+.manifesto-closer {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.closer-why {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 12px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
+}
+
+.manifesto-closer.revealed-closer + .closer-why {
+  max-height: 100px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .manifesto-line {
+    font-size: 1.3rem;
+  }
+}
