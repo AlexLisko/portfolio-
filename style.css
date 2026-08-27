@@ -1142,3 +1142,437 @@ details[open] .chevron::before {
     font-size: 1.3rem;
   }
 }
+/* ==========================================================================
+   CONCEPT D: INTERACTIVE LOOKBOOK STYLES
+   ========================================================================== */
+
+.lookbook-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.lookbook-card {
+  border: 1px solid #1a1a1a;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lookbook-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 #1a1a1a;
+}
+
+.lookbook-card.hidden {
+  display: none;
+}
+
+/* Dynamic Aspect Ratios */
+.lookbook-card.portrait .lookbook-image-wrap {
+  aspect-ratio: 3 / 4;
+}
+
+.lookbook-card.landscape .lookbook-image-wrap {
+  aspect-ratio: 4 / 3;
+}
+
+.lookbook-card.square .lookbook-image-wrap {
+  aspect-ratio: 1 / 1;
+}
+
+/* Image Wrap & Hover Cross-Fade */
+.lookbook-image-wrap {
+  position: relative;
+  width: 100%;
+  background: #c4c4c4;
+  overflow: hidden;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.lookbook-image-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.lookbook-image-wrap .img-primary {
+  opacity: 1;
+  z-index: 1;
+}
+
+.lookbook-image-wrap .img-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+.lookbook-card:hover .img-hover {
+  opacity: 1;
+}
+
+.view-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(232, 230, 227, 0.9);
+  color: #1a1a1a;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border: 1px solid #1a1a1a;
+  z-index: 3;
+}
+
+/* Monospace Spec Sheet Footer */
+.lookbook-spec {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 14px 16px;
+  background: #e8e6e3;
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-label {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #5a5a5a;
+  text-transform: uppercase;
+}
+
+.spec-val {
+  font-size: 0.75rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.lightbox-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  background: #e8e6e3;
+  border: 2px solid #1a1a1a;
+  max-width: 680px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a1a1a;
+  line-height: 1;
+  z-index: 10;
+}
+
+.lightbox-img-pane {
+  width: 100%;
+  max-height: 420px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.lightbox-img-pane img {
+  max-width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.lightbox-details {
+  padding: 24px;
+}
+
+.lightbox-details h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.lightbox-spec-line {
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.lightbox-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: 12px;
+  color: #444;
+}
+
+@media (max-width: 700px) {
+  .lookbook-grid {
+    grid-template-columns: 1fr;
+  }
+  .lookbook-spec {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* ==========================================================================
+   CONCEPT 1: DIGITAL EXHIBITION CATALOG
+   ========================================================================== */
+
+.exhibition-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.exhibition-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+
+.exhibition-spread {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.exhibition-spread.layout-right {
+  grid-template-columns: 0.9fr 1.3fr;
+}
+
+.exhibition-spread.hidden {
+  display: none;
+}
+
+/* Index Number Header */
+.exhibition-index {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #5a5a5a;
+  margin-bottom: 12px;
+}
+
+/* Image Frame & Subtle Hover Transitions */
+.exhibition-image-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  background: #c4c4c4;
+  border: 1px solid #1a1a1a;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.exhibition-image-frame:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #1a1a1a;
+}
+
+.exhibition-image-frame.garment-frame {
+  background-color: #dfdcda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibition-image-frame img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.exhibition-image-frame img.garment-png {
+  object-fit: contain;
+  padding: 24px;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
+}
+
+.exhibition-image-frame .img-primary {
+  opacity: 1;
+  z-index: 1;
+}
+
+.exhibition-image-frame .img-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+.exhibition-image-frame:hover .img-hover {
+  opacity: 1;
+}
+
+.exhibition-tag {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(232, 230, 227, 0.95);
+  color: #1a1a1a;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border: 1px solid #1a1a1a;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Dossier Column */
+.spread-dossier {
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier-header {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #5a5a5a;
+  margin-bottom: 8px;
+}
+
+.dossier-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.dossier-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.dossier-metrics {
+  border-top: 1px solid #c4c4c4;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.metric-label {
+  color: #5a5a5a;
+  letter-spacing: 1px;
+}
+
+.metric-value {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Color Swatches */
+.palette-extract {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #c4c4c4;
+  padding-top: 12px;
+}
+
+.swatch-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.swatch-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #1a1a1a;
+  display: inline-block;
+}
+
+/* Mobile Responsive */
+@media (max-width: 700px) {
+  .exhibition-spread,
+  .exhibition-spread.layout-right {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Hide unassigned or empty image elements */
+.exhibition-image-frame img:not([src]), 
+.exhibition-image-frame img[src=""] {
+  display: none !important;
+}
+
+/* Firefox broken image suppression */
+.exhibition-image-frame img:-moz-broken,
+.exhibition-image-frame img:-moz-user-disabled {
+  opacity: 0 !important;
+}
+
+/* Hide fallback broken image replacement text across WebKit and Chromium */
+.exhibition-image-frame img {
+  overflow: hidden;
+  color: transparent;
+}
