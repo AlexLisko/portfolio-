@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Lisko // Creative Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Alex Lisko</h1>
+  <nav>
+    <a href="index.html">WORK</a>
+    <a href="press.html">PRESS</a>
+    <a href="resume.html">RESUME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="creative.html" class="active">CREATIVE LAB</a>
+    <a href="philosophy.html">PHILOSOPHY</a>
+  </nav>
+</header>
+
+<section class="intro exhibition-intro">
+  <p><strong>Creative Lab & Tactile Craft</strong> — Outside of work, I love finding tactile outlets to express pure creativity. Driven by a secondhand-first ethos, every garment is reconstructed from reclaimed, vintage, and recycled materials. From bespoke sewing to experimental painting, bringing that resourceful maker mindset into physical mediums fuels the creative thinking and problem-solving I bring back into product design.</p>
+</section>
+
+<!-- Filter Navigation -->
+<div class="exhibition-filters">
+  <button class="filter-btn active" data-filter="all">ALL</button>
+  <button class="filter-btn" data-filter="sewing">SEWING & TEXTILES</button>
+  <button class="filter-btn" data-filter="painting">PAINTINGS</button>
+</div>
+
+<!-- Exhibition Spreads -->
+<main class="exhibition-catalog">
+
+  <!-- SPREAD 01: Sewing (Stanford Garment) -->
+  <section class="exhibition-spread layout-left" data-category="sewing"
+           data-title="Stanford Custom Silhouette"
+           data-medium="Heavyweight French Terry Cotton"
+           data-tech="Pattern Drafting & Overlock Seam Structure"
+           data-desc="Exploring drop-shoulder armhole tolerances, structural drape, and tactile interaction points off the screen.">
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="TEXTILE SILHOUETTE"></div>
+      <div class="exhibition-image-frame garment-frame">
+        <img src="Stanford.png" alt="Stanford Garment" class="img-primary garment-png">
+        <img src="Stanford.png" alt="Stanford Garment" class="img-hover garment-png">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Stanford Custom Silhouette</h2>
+      <p class="dossier-desc">Bespoke tailored assembly balancing movement volume and structural weight.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">450 GSM Heavy Fleece</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Flat Pattern Drafting</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">ASSEMBLY:</span>
+          <span class="metric-value">Twin-Needle Coverstitch</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #8C1515;" title="Cardinal"></span>
+          <span class="swatch-dot" style="background: #C4C4C4;" title="Heather Grey"></span>
+          <span class="swatch-dot" style="background: #2D2926;" title="Charcoal"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 02: Painting (Surf Study) -->
+  <section class="exhibition-spread layout-right" data-category="painting"
+           data-title="Surf & Motion Study"
+           data-medium="Heavy Body Acrylic & Gel Medium on Raw Canvas"
+           data-tech="Palette Knife Impasto & Fluid Motion Layering"
+           data-desc="Exploring textural viscosity, dynamic wave geometry, and physical light reflection through layered palette knife applications.">
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Surf & Motion Study</h2>
+      <p class="dossier-desc">Textural exploration capturing the kinetic energy and fluid weight of ocean surf using heavy impasto reliefs.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Heavy Acrylic & Gel Medium</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Palette Knife Impasto</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">SUBSTRATE:</span>
+          <span class="metric-value">Raw Unprimed Canvas</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #0F4C81;" title="Deep Ocean Blue"></span>
+          <span class="swatch-dot" style="background: #4EA8DE;" title="Aqua Wave"></span>
+          <span class="swatch-dot" style="background: #F4F1EA;" title="Sea Foam / Cream"></span>
+        </div>
+      </div>
+    </div>
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="CANVAS & WAVE"></div>
+      <div class="exhibition-image-frame">
+        <img src="surf.png" alt="Surf & Motion Painting" class="img-primary">
+        <img src="surf.png" alt="Process / Texture Detail" class="img-hover">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 03: Sewing (Arizona Hybrid Reconstruction) -->
+  <section class="exhibition-spread layout-left" data-category="sewing"
+           data-title="Arizona Cats Hybrid Reconstruction"
+           data-medium="Vintage Cotton Jersey & Woven Plaid Flannel"
+           data-tech="Deconstruction, Asymmetric Side Gussets & High-Low Hem"
+           data-desc="Exploring mixed-material tensile differences, structural drape blending stretchy knit with rigid woven flannel, and button-cuff sleeve integration.">
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="TEXTILE HYBRID"></div>
+      <div class="exhibition-image-frame garment-frame">
+        <img src="UOASEW.PNG" alt="Arizona Cats Hybrid Reconstruction" class="img-primary garment-png">
+        <img src="UOASEW.PNG" alt="Arizona Cats Hybrid Reconstruction" class="img-hover garment-png">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Arizona Cats Hybrid Reconstruction</h2>
+      <p class="dossier-desc">Mixed-medium deconstructed pullover integrating tailored woven flannel shirting sleeves and stepped hem architecture.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Cotton Jersey / Plaid Twill</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Upcycled Deconstruction</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">HEM ARCHITECTURE:</span>
+          <span class="metric-value">Stepped High-Low Profile</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #CC0033;" title="Arizona Red"></span>
+          <span class="swatch-dot" style="background: #1B2956;" title="Navy Tartan"></span>
+          <span class="swatch-dot" style="background: #E8D7B8;" title="Oatmeal Plaid"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 04: Painting (Sunset Blues) -->
+  <section class="exhibition-spread layout-right" data-category="painting"
+           data-title="Sunset Blues Chromatic Study"
+           data-medium="Heavy Body Acrylic & Blending Medium on Canvas"
+           data-tech="Color Field Transitions & Impasto Topography"
+           data-desc="Exploring the chromatic tension between warm twilight tones and cooling shadows, utilizing heavy textured strokes to catch natural light across the canvas surface.">
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Sunset Blues Chromatic Study</h2>
+      <p class="dossier-desc">Atmospheric color study capturing the transitional shift from golden hour warmth into deep evening indigo.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Heavy Body Acrylic</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Layered Color Transitions</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">SUBSTRATE:</span>
+          <span class="metric-value">Stretched Cotton Canvas</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #E76F51;" title="Twilight Coral"></span>
+          <span class="swatch-dot" style="background: #F4A261;" title="Golden Warmth"></span>
+          <span class="swatch-dot" style="background: #264653;" title="Deep Indigo Blue"></span>
+        </div>
+      </div>
+    </div>
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="CHROMATIC FIELD"></div>
+      <div class="exhibition-image-frame">
+        <img src="sunset-blues.png" alt="Sunset Blues Painting" class="img-primary">
+        <img src="sunset-blues.png" alt="Detail & Texture Pass" class="img-hover">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 05: Sewing (D-backs Layered Reconstruction) -->
+  <section class="exhibition-spread layout-left" data-category="sewing"
+           data-title="Diamondbacks Layered Reconstruction"
+           data-medium="Vintage Washed Cotton Jersey & Micro-Check Woven Shirting"
+           data-tech="Double-Sleeve Insertion & Articulated Barrel Cuffs"
+           data-desc="Investigating modular layered sleeve ergonomics, drop-shoulder armhole joins, and contrast fabric drape between soft washed knit and structured shirting.">
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="TEXTILE LAYER"></div>
+      <div class="exhibition-image-frame garment-frame">
+        <img src="baseball.PNG" alt="Diamondbacks Layered Reconstruction" class="img-primary garment-png">
+        <img src="baseball.PNG" alt="Diamondbacks Layered Reconstruction" class="img-hover garment-png">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Diamondbacks Layered Reconstruction</h2>
+      <p class="dossier-desc">Hybrid dual-sleeve long-sleeve combining a boxy faded graphic tee with tailored micro-check shirting cuffs.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Washed Jersey / Poplin</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Layered Sleeve Integration</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">CUFF PROFILE:</span>
+          <span class="metric-value">Extended Tailored Barrel</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #1A1A1A;" title="Washed Charcoal"></span>
+          <span class="swatch-dot" style="background: #A71930;" title="Sedona Red"></span>
+          <span class="swatch-dot" style="background: #E3D9C6;" title="Vintage Sand Check"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 06: Painting (Trumpet Man) -->
+  <section class="exhibition-spread layout-right" data-category="painting"
+           data-title="Trumpet Man Figure & Sound Study"
+           data-medium="Heavy Acrylic & Textured Medium on Canvas"
+           data-tech="Expressive Figurative Brushwork & High-Contrast Lighting"
+           data-desc="Exploring the physical posture of performance, tonal contrast, and dynamic energy—translating acoustic resonance into gestural brushstrokes and textural depth.">
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Trumpet Man Figurative Study</h2>
+      <p class="dossier-desc">Figurative exploration capturing the kinetic intensity, silhouette tension, and atmospheric warmth of live jazz performance.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Heavy Acrylic on Canvas</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Gestural Figurative Strokes</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">ATMOSPHERE:</span>
+          <span class="metric-value">Chiaroscuro / High Contrast</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #E5A93C;" title="Brass Gold"></span>
+          <span class="swatch-dot" style="background: #8C4820;" title="Warm Amber Umber"></span>
+          <span class="swatch-dot" style="background: #18171C;" title="Deep Noir"></span>
+        </div>
+      </div>
+    </div>
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="FIGURATIVE"></div>
+      <div class="exhibition-image-frame">
+        <img src="trumpet_man.jpg" alt="Trumpet Man Painting" class="img-primary">
+        <img src="trumpet_man.jpg" alt="Detail & Texture Pass" class="img-hover">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD 07: Sewing (Patch Check Button-Down) -->
+  <section class="exhibition-spread layout-left" data-category="sewing"
+           data-title="Tailored Grid Check & Embroidered Insignia"
+           data-medium="Woven Tattersall Cotton & Embroidered Felt Patch"
+           data-tech="Sleeve Cropping, Rolled Cuffs & Precision Patch Appliqué"
+           data-desc="Refitting a classic button-down collar profile with cropped articulated short sleeves, double-stitched hem curvature, and chest insignia balance.">
+    <div class="spread-main">
+      <div class="exhibition-index" data-type="TAILORED SHIRTING"></div>
+      <div class="exhibition-image-frame garment-frame">
+        <img src="patch-hem.PNG" alt="Tailored Grid Check Shirt" class="img-primary garment-png">
+        <img src="patch-hem.PNG" alt="Tailored Grid Check Shirt" class="img-hover garment-png">
+        <span class="exhibition-tag">[CLICK TO EXPAND]</span>
+      </div>
+    </div>
+    <div class="spread-dossier">
+      <div class="dossier-header">TECHNICAL DOSSIER</div>
+      <h2 class="dossier-title">Tailored Grid Check & Patch Appliqué</h2>
+      <p class="dossier-desc">Short-sleeve re-tailoring of a classic tattersall check with structured button-down collar points and vintage athletic felt appliqué.</p>
+      
+      <div class="dossier-metrics">
+        <div class="metric-row">
+          <span class="metric-label">MEDIUM:</span>
+          <span class="metric-value">Woven Tattersall Cotton</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">TECHNIQUE:</span>
+          <span class="metric-value">Sleeve Re-tailoring & Appliqué</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">COLLAR PROFILE:</span>
+          <span class="metric-value">Button-Down Point Roll</span>
+        </div>
+      </div>
+      
+      <div class="palette-extract">
+        <span class="metric-label">PALETTE:</span>
+        <div class="swatch-dots">
+          <span class="swatch-dot" style="background: #E8E2D8;" title="Cream Check Ground"></span>
+          <span class="swatch-dot" style="background: #8E4438;" title="Rust Grid"></span>
+          <span class="swatch-dot" style="background: #1D2A44;" title="Navy Felt Ground"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close modal">&times;</button>
+    <div class="lightbox-img-pane">
+      <img id="lightbox-img" src="" alt="Expanded View">
+    </div>
+    <div class="lightbox-details">
+      <h2 id="lightbox-title"></h2>
+      <p class="lightbox-spec-line"><strong>TECHNIQUE:</strong> <span id="lightbox-tech"></span></p>
+      <p class="lightbox-spec-line"><strong>MEDIUM:</strong> <span id="lightbox-medium"></span></p>
+      <p id="lightbox-desc" class="lightbox-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Filter Tabs & Dynamic Sequential Indexing
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const spreads = Array.from(document.querySelectorAll('.exhibition-spread'));
+  const modal = document.getElementById('lightbox-modal');
+  const closeBtn = document.getElementById('lightbox-close');
+  const modalImg = document.getElementById('lightbox-img');
+  const modalTitle = document.getElementById('lightbox-title');
+  const modalTech = document.getElementById('lightbox-tech');
+  const modalMedium = document.getElementById('lightbox-medium');
+  const modalDesc = document.getElementById('lightbox-desc');
+  let currentIndex = -1;
+
+  function renumberSpreads() {
+    const visibleSpreads = spreads.filter(s => !s.classList.contains('hidden'));
+    visibleSpreads.forEach((spread, i) => {
+      const indexEl = spread.querySelector('.exhibition-index');
+      if (indexEl) {
+        const num = String(i + 1).padStart(2, '0');
+        const type = indexEl.getAttribute('data-type') || 'PIECE';
+        indexEl.textContent = `NO. ${num} // ${type}`;
+      }
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      spreads.forEach(spread => {
+        if (filter === 'all' || spread.getAttribute('data-category') === filter) {
+          spread.classList.remove('hidden');
+        } else {
+          spread.classList.add('hidden');
+        }
+      });
+
+      renumberSpreads();
+    });
+  });
+
+  // Lightbox Modal Controls
+  function openModal(index) {
+    const visibleSpreads = spreads.filter(s => !s.classList.contains('hidden'));
+    if (index < 0 || index >= visibleSpreads.length) return;
+    currentIndex = index;
+    const spread = visibleSpreads[currentIndex];
+
+    const primaryImg = spread.querySelector('.img-primary');
+    modalImg.src = primaryImg.src;
+    modalTitle.textContent = spread.getAttribute('data-title');
+    modalTech.textContent = spread.getAttribute('data-tech');
+    modalMedium.textContent = spread.getAttribute('data-medium');
+    modalDesc.textContent = spread.getAttribute('data-desc');
+    modal.classList.add('open');
+  }
+
+  spreads.forEach(spread => {
+    const frame = spread.querySelector('.exhibition-image-frame');
+    frame.addEventListener('click', () => {
+      const visibleSpreads = spreads.filter(s => !s.classList.contains('hidden'));
+      openModal(visibleSpreads.indexOf(spread));
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    const visibleSpreads = spreads.filter(s => !s.classList.contains('hidden'));
+
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') openModal((currentIndex + 1) % visibleSpreads.length);
+    if (e.key === 'ArrowLeft') openModal((currentIndex - 1 + visibleSpreads.length) % visibleSpreads.length);
+  });
+
+  // Run index sequence on initial page load
+  renumberSpreads();
+</script>
+
+</body>
+</html>ß
