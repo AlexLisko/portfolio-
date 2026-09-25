@@ -269,33 +269,53 @@ body {
       </div>
     </header>
 
- <!-- From Sketch to App Section -->
+
+
+<!-- From Sketch to App Section with Side-by-Side Live Demo -->
     <section>
       <div class="section-head">
         <span class="eyebrow">Genesis</span>
         <h2>From a sketch to an app on my phone</h2>
       </div>
-      <p>I started with a product idea and a set of lo-fi wireframes: a mobile app for managing what's in the kitchen, paired with a small display that sits on the fridge. Then I built the mobile app natively for iPhone in Xcode with SwiftUI, learning Swift as I went. The app tracks fridge and pantry items, reminds you before food expires, suggests a recipe that uses what you have, and builds your grocery list automatically.</p>
 
-<!-- Lo-Fi Sketches & Architecture Side-by-Side Gallery -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; align-items: start;">
+      <!-- Two-Column Layout: Story on Left, Phone Demo on Right -->
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start;">
         
-        <figure style="margin: 0;">
-          <img src="lofiwire.png" alt="Early lo-fi sketches and paper wireframes for FreshKeeper" style="width: 100%; border-radius: 8px; border: 1px solid var(--line);">
-          <figcaption>Early paper sketches mapping out the core home dashboard and quick-add flows.</figcaption>
-        </figure>
+        <!-- Left Column: Story & Sketches -->
+        <div style="display: grid; gap: 24px;">
+          <p>I started with a product idea and a set of lo-fi wireframes: a mobile app for managing what's in the kitchen, paired with a small display that sits on the fridge. Then I built the mobile app natively for iPhone in Xcode with SwiftUI, learning Swift as I went. The app tracks fridge and pantry items, reminds you before food expires, suggests a recipe that uses what you have, and builds your grocery list automatically.</p>
 
-        <figure style="margin: 0;">
-          <img src="AppIcondraw.png" alt="Overall architecture wireframes and screen flows" style="width: 100%; border-radius: 8px; border: 1px solid var(--line);">
-          <figcaption> Paper Drawings of the App Icon</figcaption>
-        </figure>
+          <!-- Lo-Fi Sketches Gallery -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <figure style="margin: 0;">
+              <img src="lofiwire.png" alt="Early lo-fi sketches" style="width: 100%; border-radius: 8px; border: 1px solid var(--line);">
+              <figcaption>Core home dashboard & quick-add flows.</figcaption>
+            </figure>
+            <figure style="margin: 0;">
+              <img src="AppIcondraw.png" alt="App icon paper drawings" style="width: 100%; border-radius: 8px; border: 1px solid var(--line);">
+              <figcaption>Paper drawings of the app icon.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Right Column: Anchored Phone Demo Card -->
+        <div class="phone-card" style="padding: 16px; gap: 10px; max-width: 320px; justify-self: center; width: 100%;">
+          <header style="margin-bottom: 2px;">
+            <strong>FreshKeeper in action</strong>
+            <span>Live Demo</span>
+          </header>
+          <p class="muted" style="font-size: 13.5px; margin: 0;">Running natively on iOS with real-time expiry tracking and inventory management.</p>
+          
+          <div style="position: relative; width: 100%; aspect-ratio: 9/16; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--line);">
+            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              <source src="demoreel1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
 
       </div>
-
-    <!-- Drop the demo placeholder here -->
-    <div style="display: inline-block; padding: 10px 16px; background: var(--chip); border-radius: 999px; font: 500 13px/1 var(--mono); color: var(--muted); margin-top: 12px;">
-      🎥 Interactive Demo Coming Soon
-    </div>
+    </section>
     <!-- Problem / Solution -->
     <section class="two-col">
       <div>
@@ -306,7 +326,7 @@ body {
       <div>
         <span class="eyebrow">The Solution</span>
         <h3>One place that keeps track for you</h3>
-        <p class="muted">GroceryApp tracks fridge and pantry items with their expiry dates, reminds you before food goes bad, suggests a meal that uses up what's expiring, and turns running-low items into a grocery list that restocks your inventory when you shop.</p>
+        <p class="muted">FreshKeeper tracks fridge and pantry items with their expiry dates, reminds you before food goes bad, suggests a meal that uses up what's expiring, and turns running-low items into a grocery list that restocks your inventory when you shop.</p>
       </div>
     </section>
 
