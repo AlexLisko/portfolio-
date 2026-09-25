@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroceryApp Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #F4F1EA;
+      --surface: #FFFFFF;
+      --ink: #111111;
+      --muted: #666666;
+      --line: #DDDCDB;
+      --accent: #111111;
+      --accent-soft: rgba(0, 0, 0, 0.05);
+      --red: #C9362E;
+      --orange: #C46A12;
+      --chip: #EAE6DF;
+      --display: "Courier New", Courier, monospace;
+      --body: "Courier New", Courier, monospace;
+      --mono: "Courier New", Courier, monospace;
+    }
+
+body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16px/1.6 var(--body);
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0px 40px; /* Matches the 0px vertical padding used on your other pages */
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 88px; }
+
+    /* Unified Site Header matching your other pages */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+    }
+    .site-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .site-header nav {
+      display: flex;
+      gap: 20px;
+      font: 500 12px/1 var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .site-header nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-header nav a:hover,
+    .site-header nav a.active {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 700; letter-spacing: -0.01em; }
+    h3 { font-size: 18px; font-weight: 700; }
+    p { margin: 0; max-width: 65ch; }
+    .muted { color: var(--muted); }
+    .eyebrow {
+      font: 500 12px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    section { display: grid; gap: 28px; }
+    .section-head { display: grid; gap: 12px; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: center; }
+    .hero-text { display: grid; gap: 22px; }
+    .lede { font-size: 18px; color: var(--muted); max-width: 42ch; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta span {
+      font: 500 13px/1 var(--mono); padding: 9px 12px; border-radius: 999px;
+      background: var(--chip); color: var(--ink);
+    }
+    .hero-art { display: grid; place-items: center; position: relative; }
+
+    /* App icon: rounded iPhone-style corners, soft shadow, slight tilt */
+    .app-icon {
+      width: min(260px, 70vw);
+      aspect-ratio: 1;
+      max-width: 100%;
+      border-radius: 22.5%;
+      overflow: hidden;
+      box-shadow:
+        0 30px 60px -20px rgba(0, 0, 0, 0.25),
+        0 2px 0 rgba(255, 255, 255, 0.4) inset;
+      transform: rotate(-4deg);
+    }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Doodle note & arrow pointing to icon from the bottom right */
+    .doodle-badge {
+      position: absolute;
+      bottom: -35px;
+      right: -80px;
+      font-family: 'Caveat', cursive, sans-serif;
+      font-size: 22px;
+      color: var(--ink);
+      transform: rotate(2deg);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .doodle-badge svg {
+      width: 40px;
+      height: 20px;
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: scaleX(-1);
+    }
+
+    /* Figures */
+    figure { margin: 0; display: grid; gap: 10px; }
+    figure img { width: 100%; border-radius: 14px; border: 1px solid var(--line); display: block; }
+    figcaption { font-size: 14px; color: var(--muted); }
+
+    /* Problem / solution */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .two-col > div { display: grid; gap: 14px; align-content: start; }
+
+    /* Feature list */
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .feature { background: var(--surface); padding: 24px; display: grid; gap: 8px; align-content: start; }
+    .feature .tech { font: 400 12.5px/1.4 var(--mono); color: var(--muted); }
+    .feature p { font-size: 15px; color: var(--muted); }
+
+    /* Mini dashboard mock */
+    .demo { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+    .phone-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+      padding: 22px; display: grid; gap: 14px; box-shadow: 0 20px 40px -28px rgba(0,0,0,0.35);
+    }
+    .phone-card header { display: flex; justify-content: space-between; align-items: baseline; }
+    .phone-card header strong { font-family: var(--display); font-size: 16px; }
+    .phone-card header span { font-size: 13px; color: var(--muted); }
+    .row { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px; padding-block: 6px; border-top: 1px solid var(--line); }
+    .row:first-of-type { border-top: 0; }
+    .days { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .days.red { color: var(--red); }
+    .days.orange { color: var(--orange); }
+
+    /* Loop */
+    .loop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .loop .step { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; font-weight: 600; }
+    .loop .arrow { color: var(--ink); font-family: var(--mono); }
+
+    /* Timeline */
+    .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
+    .timeline li {
+      counter-increment: step; display: grid; grid-template-columns: 56px 1fr; gap: 16px;
+      padding-block: 16px; border-top: 1px solid var(--line);
+    }
+    .timeline li::before {
+      content: counter(step, decimal-leading-zero);
+      font: 500 14px/1.6 var(--mono); color: var(--muted);
+    }
+    .timeline h3 { font-size: 16px; margin-bottom: 2px; }
+    .timeline p { font-size: 15px; color: var(--muted); }
+
+    /* Challenges */
+    .challenges { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .challenge { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 12px; align-content: start; }
+    .challenge dl { margin: 0; display: grid; gap: 10px; }
+    .challenge dt { font: 500 11.5px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .challenge dd { margin: 0; font-size: 15px; }
+
+    /* Stack */
+    .stack { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stack span { font: 500 13px/1 var(--mono); padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+
+    pre {
+      margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+      padding: 18px 20px; overflow-x: auto; font: 400 13px/1.6 var(--mono); color: var(--ink);
+    }
+    .kw { color: #111111; font-weight: bold; }
+    .cm { color: var(--muted); }
+
+    .learned { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 40px; margin: 0; padding: 0; list-style: none; }
+    .learned li { padding-left: 22px; position: relative; }
+    .learned li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 10px; height: 10px; border-radius: 3px; background: var(--ink); }
+
+    .next { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .next div { border-top: 3px solid var(--line); padding-top: 14px; display: grid; gap: 6px; }
+    .next p { font-size: 15px; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--line); padding-top: 24px; font-size: 14px; color: var(--muted); }
+
+    @media (max-width: 820px) {
+      .hero, .two-col, .demo, .challenges { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .learned, .next { grid-template-columns: 1fr; }
+      .hero-art { order: -1; justify-items: start; }
+      .app-icon { width: 160px; }
+      .wrap { gap: 64px; padding-block: 36px 72px; }
+    }
+    @media (max-width: 520px) {
+      .features { grid-template-columns: 1fr; }
+      body { font-size: 15px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- UNIFIED SITE HEADER -->
+    <header class="site-header">
+      <h1>Alex Lisko</h1>
+      <nav>
+        <a href="index.html" class="active">WORK</a>
+        <a href="press.html">PRESS</a>
+        <a href="resume.html">RESUME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="creative.html">CREATIVE LAB</a>
+        <a href="philosophy.html">PHILOSOPHY</a>
+      </nav>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-text">
+          <a href="index.html" class="back-link">&larr; Back to Work</a>
+        <span class="eyebrow">iOS app</span>
+        <h1>FreshKeeper</h1>
+        <p class="lede">A fridge and pantry tracker that warns you before food expires, suggests what to cook, and builds your grocery list for you.</p>
+        <div class="meta">
+          <span>Role: Design + iOS development</span>
+          <span>Swift · SwiftUI · SwiftData</span>
+          <span>Built Sep 2026</span>
+          <span>Runs on iPhone iOS 27</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="app-icon">
+          <img src="FreshIcon.png" alt="GroceryApp icon: a white fridge with a green leaf on a green gradient">
+        </div>
+        <div class="doodle-badge">
+          <svg viewBox="0 0 50 30">
+            <path d="M 45 5 Q 25 5 5 20 M 15 12 L 5 20 L 12 27" />
+          </svg>
+          <span>designed by me in Figma</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- From Sketch to App Section -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Genesis</span>
+        <h2>From a sketch to an app on my phone</h2>
+      </div>
+      <p>I started with a product idea and a set of lo-fi wireframes: a mobile app for managing what's in the kitchen, paired with a small display that sits on the fridge. Then I built the mobile app natively for iPhone in Xcode with SwiftUI, learning Swift as I went. The app tracks fridge and pantry items, reminds you before food expires, suggests a recipe that uses what you have, and builds your grocery list automatically.</p>
+
+  
+
+    <!-- Drop the demo placeholder here -->
+    <div style="display: inline-block; padding: 10px 16px; background: var(--chip); border-radius: 999px; font: 500 13px/1 var(--mono); color: var(--muted); margin-top: 12px;">
+      🎥 Interactive Demo Coming Soon
+    </div>
+    <!-- Problem / Solution -->
+    <section class="two-col">
+      <div>
+        <span class="eyebrow">The Problem</span>
+        <h3>Food gets forgotten</h3>
+        <p class="muted">Things expire at the back of the fridge, and staples run out without anyone noticing. At the store you don't remember what's already at home. And when it's time to cook, it's hard to think of a meal that uses what you have.</p>
+      </div>
+      <div>
+        <span class="eyebrow">The Solution</span>
+        <h3>One place that keeps track for you</h3>
+        <p class="muted">GroceryApp tracks fridge and pantry items with their expiry dates, reminds you before food goes bad, suggests a meal that uses up what's expiring, and turns running-low items into a grocery list that restocks your inventory when you shop.</p>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview Mock -->
+    <section class="demo">
+      <div class="phone-card">
+        <header>
+          <strong>What matters today</strong>
+          <span>At a glance</span>
+        </header>
+        <p class="muted" style="font-size: 14px;">The home dashboard shows what's expiring and what's running low, with the most urgent items in red and the next-most urgent in orange.</p>
+        <div class="row">
+          <span>🥬</span>
+          <strong>Spinach</strong>
+          <span class="days red">2 days</span>
+        </div>
+        <div class="row">
+          <span>🍓</span>
+          <strong>Berries</strong>
+          <span class="days red">3 days</span>
+        </div>
+        <div class="row">
+          <span>🥛</span>
+          <strong>Milk</strong>
+          <span class="days orange">4 days</span>
+        </div>
+      </div>
+      <div style="display: grid; gap: 16px;">
+        <span class="eyebrow">Glanceability</span>
+        <h2>Designed for quick daily checks</h2>
+        <p class="muted">By surfacing expiry dates on the first screen, users know straight away which ingredients to use up before they spoil.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Capabilities</span>
+        <h2>Features</h2>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>Home dashboard</h3>
+          <p>Expiring soon, a recipe idea that uses up expiring food, and a quick list of items running low.</p>
+         
+        </div>
+        <div class="feature">
+          <h3>Inventory</h3>
+          <p>Fridge / Pantry / All filters, sorted soonest-expiring first, with swipe to delete.</p>
+          
+        </div>
+        <div class="feature">
+          <h3>Add &amp; edit items</h3>
+          <p>A quick form with emoji picker, units, expiry date and a "running low" threshold. Edits save as you type.</p>
+          
+        </div>
+        <div class="feature">
+          <h3>Barcode scanning</h3>
+          <p>Scan a package to fill in its name, emoji and whether it goes in the fridge or pantry.</p>
+          
+        </div>
+        <div class="feature">
+          <h3>Expiry reminders</h3>
+          <p>A notification at 9 AM, a set number of days before each item expires. Adjustable for every item.</p>
+          
+        </div>
+        <div class="feature">
+          <h3>Smart grocery list</h3>
+          <p>Suggests running-low items with amounts to buy. Checking one off restocks the inventory.</p>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Interaction -->
+    <section style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 36px;">
+      <span class="eyebrow">Key Interaction</span>
+      <h2 style="margin-top: 6px;">The restock loop</h2>
+      <p class="muted" style="margin-bottom: 24px;">The part I'm proudest of is how the screens connect. Each item can have a "running low" level. When the quantity drops to that level, the item appears on the dashboard and is suggested on the grocery list with an amount to buy. Checking it off at the store adds that amount back to the inventory, and it drops off the list.</p>
+
+      <div class="loop">
+        <div class="step">🥚 Eggs: 2 left</div>
+        <span class="arrow">→</span>
+        <div class="step">🛒 Running low</div>
+        <span class="arrow">→</span>
+        <div class="step">📝 Grocery list: buy 4</div>
+        <span class="arrow">→</span>
+        <div class="step">✅ Checked off</div>
+        <span class="arrow">→</span>
+        <div class="step">📦 Inventory: 6</div>
+      </div>
+    </section>
+
+    <!-- Timeline / Build Unfolded -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Execution</span>
+        <h2>How the build unfolded</h2>
+        <p class="muted">I built the app one screen at a time, running it after every step and committing each working version to Git.</p>
+      </div>
+
+      <ul class="timeline">
+        <li>
+          <div>
+            <h3>Wireframes and architecture</h3>
+            <p>Mapped the fridge display, the mobile app and a cloud sync layer, then wireframed eight screens and the navigation.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Chose native iOS</h3>
+            <p>Started a React Native (Expo) project in VS Code, then switched to Xcode and SwiftUI to build a native iPhone app and learn Apple's tools.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Home dashboard</h3>
+            <p>Built the dashboard cards from small reusable components, with mock data, and kept the expiry logic separate from the UI.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Navigation</h3>
+            <p>Added the five-tab bar from the wireframe, and made "See all" jump straight to Inventory.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Inventory and add item</h3>
+            <p>A filterable list, swipe to delete, and an add form, all reading from one shared source of data.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Saving data</h3>
+            <p>Moved from in-memory data to SwiftData so items are saved between launches.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Item detail and grocery list</h3>
+            <p>Editing with auto-save, then the grocery list and the restock loop.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Notifications</h3>
+            <p>Expiry reminders that update when a date changes and cancel when an item is deleted.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Code Snippet -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Architecture</span>
+        <h2>A small, readable data model</h2>
+      </div>
+      <pre><code><span class="kw">@Model</span>
+<span class="kw">final class</span> Item {
+    <span class="kw">var</span> name: String
+    <span class="kw">var</span> location: StorageLocation   <span class="cm">// fridge or pantry</span>
+    <span class="kw">var</span> quantity: Double
+    <span class="kw">var</span> expiresOn: Date?           <span class="cm">// pantry staples may not have one</span>
+    <span class="kw">var</span> lowThreshold: Double?      <span class="cm">// at or below this = "running low"</span>
+    <span class="kw">var</span> remindDaysBefore: Int = 2
+}</code></pre>
+    </section>
+
+    <!-- Challenges -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Problem Solving</span>
+        <h2>Challenges &amp; solutions</h2>
+      </div>
+      <div class="challenges">
+        <div class="challenge">
+          <h3>Camera scanner black screen</h3>
+          <dl>
+            <div>
+              <dt>Challenge</dt>
+              <dd>The barcode scanner opened but never showed an image.</dd>
+            </div>
+            <div>
+              <dt>Solution</dt>
+              <dd>Switched from VisionKit to AVFoundation's barcode reader, then added on-screen messages that report why the camera is interrupted. The cause turned out to be iPhone Mirroring, which blocks the camera.</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="challenge">
+          <h3>Moving to saved data</h3>
+          <dl>
+            <div>
+              <dt>Challenge</dt>
+              <dd>Switching the model to SwiftData touched almost every file and broke the previews.</dd>
+            </div>
+            <div>
+              <dt>Solution</dt>
+              <dd>Converted the model to an @Model class, replaced the shared store with @Query, and made an in-memory database for previews.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Engineering</span>
+        <h2>Tech stack</h2>
+        <p class="muted">I created and assembled every file in Xcode myself, debugged the build errors, and tested each feature on the simulator and on my iPhone.</p>
+      </div>
+      <div class="stack">
+        <span>#Swift</span>
+        <span>#SwiftUI</span>
+        <span>#SwiftData</span>
+        <span>#Xcode</span>
+        <span>#UserNotifications</span>
+        <span>#AVFoundation</span>
+        <span>#Git</span>
+        <span>#Figma</span>
+        <span>#UserResearch</span>
+        <span>#InformationArchitecture</span>
+        <span>#UIUX</span>
+        <span>#DataFlow</span>
+      </div>
+    </section>
+
+    <!-- What I Learned -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Takeaways</span>
+        <h2>What I learned</h2>
+      </div>
+      <ul class="learned">
+        <li>Structuring a SwiftUI app into models, screens and reusable components</li>
+        <li>Persisting data with SwiftData and keeping screens in sync with @Query</li>
+        <li>Reading compiler errors: one missing import or brace can cause a dozen errors</li>
+        <li>Using Git commits as save points before every risky change</li>
+        <li>Code signing and running an app on a physical iPhone</li>
+        <li>Working with device permissions for the camera and notifications</li>
+        <li>Calling a web API and decoding its JSON into Swift types</li>
+        <li>Designing and exporting an app icon to Apple's specs</li>
+      </ul>
+    </section>
+
+    <!-- Roadmap -->
+    <section>
+      <div class="section-head">
+        <span class="eyebrow">Future Vision</span>
+        <h2>Roadmap</h2>
+      </div>
+      <div class="next">
+        <div>
+          <h3>Fridge display</h3>
+          <p>The wall-mounted screen from the original concept, synced with the phone through iCloud.</p>
+        </div>
+        <div>
+          <h3>Household sharing</h3>
+          <p>One shared inventory and grocery list for everyone at home.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      Alex Lisko · Designed and built in September 2026.
+    </footer>
+
+  </div>
+
+</body>
+</html>

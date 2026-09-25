@@ -5,135 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Press // Alex Lisko</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    gap: 0px; /* Reduces the vertical spacing between the header and sections */
+  }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-<h1>Alex Lisko</h1>
-<nav>
-<a href="index.html">WORK</a>
-<a href="press.html" class="active">PRESS</a>
-<a href="resume.html">RESUME</a>
-<a href="about.html">ABOUT</a>
-<a href="creative.html">CREATIVE LAB</a>
-<a href="philosophy.html">PHILOSOPHY</a>
-</nav>
-</header>
+<div class="wrap">
 
-<section class="press-intro">
-<p><strong>Featured In</strong><br>
-    Media coverage and press highlights.</p>
-</section>
+  <header class="site-header">
+    <h1>Alex Lisko</h1>
+    <nav>
+      <a href="index.html">WORK</a>
+      <a href="press.html" class="active">PRESS</a>
+      <a href="resume.html">RESUME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="creative.html">CREATIVE LAB</a>
+      <a href="philosophy.html">PHILOSOPHY</a>
+    </nav>
+  </header>
 
-<div class="press-filters">
-<button class="filter-btn active" data-filter="all">ALL</button>
-<button class="filter-btn" data-filter="articles">ARTICLES</button>
-<button class="filter-btn" data-filter="youtube">YOUTUBE</button>
+  <div style="display: grid; gap: 24px;">
+    <section class="press-intro">
+      <p><strong>Featured In</strong><br>
+          Media coverage and press highlights.</p>
+    </section>
+
+    <div class="press-filters">
+      <button class="filter-btn active" data-filter="all">ALL</button>
+      <button class="filter-btn" data-filter="articles">ARTICLES</button>
+      <button class="filter-btn" data-filter="youtube">YOUTUBE</button>
+    </div>
+  </div>
+
+  <section class="press-grid">
+
+    <a href="https://www.apple.com/newsroom/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
+      <img src="dual-knit-article.jpg" alt="Apple Vision Pro upgraded with the M5 chip and Dual Knit Band" class="press-thumb">
+      <p class="press-caption">Apple Newsroom — Apple Vision Pro upgraded with the M5 chip and Dual Knit Band</p>
+    </a>
+
+    <a href="https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
+      <img src="apple-intelligence-article.jpg" alt="Introducing Apple Intelligence for iPhone, iPad, and Mac" class="press-thumb">
+      <p class="press-caption">Apple Newsroom — Introducing Apple Intelligence for iPhone, iPad, and Mac</p>
+    </a>
+
+    <a href="https://www.apple.com/newsroom/2024/10/apple-intelligence-is-available-today-on-iphone-ipad-and-mac/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
+      <img src="siri-ai-article.jpg" alt="Apple introduces Siri AI, a profoundly more capable and personal assistant" class="press-thumb">
+      <p class="press-caption">Apple Newsroom — Apple Intelligence is available today on iPhone, iPad, and Mac</p>
+    </a>
+
+    <a href="https://www.cbsnews.com/news/apple-intelligence-rollout-ios-18-1-october-28-2024/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
+      <img src="cbs-article.png" alt="Apple Intelligence rollout, iOS 18.1" class="press-thumb">
+      <p class="press-caption">CBS News — Apple Intelligence rollout, iOS 18.1</p>
+    </a>
+
+    <div class="press-card" data-category="youtube">
+      <div class="video-wrapper">
+        <iframe 
+        src="https://www.youtube.com/embed/RXeOiIDNNek?start=3870" 
+        title="Press release video" 
+        frameborder="0" 
+        allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+        </iframe>
+      </div>
+      <p class="press-caption">WWDC 2024 — June 10 | Apple</p>
+    </div>
+
+    <div class="press-card" data-category="youtube">
+      <div class="video-wrapper">
+        <iframe 
+        src="https://www.youtube.com/embed/BG4rIj38DlM" 
+        title="Press release video" 
+        frameborder="0" 
+        allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+        </iframe>
+      </div>
+      <p class="press-caption">Apple WWDC: Apple shows off big new AI upgrades to Siri | CNBC Television</p>
+    </div>
+
+    <div class="press-card" data-category="youtube">
+      <div class="video-wrapper">
+        <iframe 
+        src="https://www.youtube.com/embed/GJKuKngdpVU" 
+        title="Press release video" 
+        frameborder="0" 
+        allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+        </iframe>
+      </div>
+      <p class="press-caption">Apple Intelligence Ad | More personal Siri - Tech T</p>
+    </div>
+
+    <div class="press-card" data-category="youtube">
+      <div class="video-wrapper">
+        <iframe 
+        src="https://www.youtube.com/embed/_mfLnD1V44A" 
+        title="Press release video" 
+        frameborder="0" 
+        allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+        </iframe>
+      </div>
+      <p class="press-caption">How to get the best fit wearing Apple Vision Pro | Apple Support</p>
+    </div>
+
+  </section>
+
 </div>
-
-<section class="press-grid">
-
-<a href="https://www.apple.com/newsroom/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
-<img src="dual-knit-article.jpg" alt="Apple Vision Pro upgraded with the M5 chip and Dual Knit Band" class="press-thumb">
-<p class="press-caption">Apple Newsroom — Apple Vision Pro upgraded with the M5 chip and Dual Knit Band</p>
-</a>
-
-<a href="https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
-<img src="apple-intelligence-article.jpg" alt="Introducing Apple Intelligence for iPhone, iPad, and Mac" class="press-thumb">
-<p class="press-caption">Apple Newsroom — Introducing Apple Intelligence for iPhone, iPad, and Mac</p>
-</a>
-
-<a href="https://www.apple.com/newsroom/2024/10/apple-intelligence-is-available-today-on-iphone-ipad-and-mac/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
-<img src="siri-ai-article.jpg" alt="Apple introduces Siri AI, a profoundly more capable and personal assistant" class="press-thumb">
-<p class="press-caption">Apple Newsroom — Apple Intelligence is available today on iPhone, iPad, and Mac</p>
-</a>
-
-<a href="https://www.cbsnews.com/news/apple-intelligence-rollout-ios-18-1-october-28-2024/" class="press-card" data-category="articles" target="_blank" rel="noopener noreferrer">
-<img src="cbs-article.png" alt="Apple Intelligence rollout, iOS 18.1" class="press-thumb">
-<p class="press-caption">CBS News — Apple Intelligence rollout, iOS 18.1</p>
-</a>
-
-<div class="press-card" data-category="youtube">
-<div class="video-wrapper">
-<iframe 
-src="https://www.youtube.com/embed/RXeOiIDNNek?start=3870" 
-title="Press release video" 
-frameborder="0" 
-allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
-</div>
-<p class="press-caption">
-WWDC 2024 — June 10 | Apple</p>
-</div>
-
-<div class="press-card" data-category="youtube">
-<div class="video-wrapper">
-<iframe 
-src="https://www.youtube.com/embed/BG4rIj38DlM" 
-title="Press release video" 
-frameborder="0" 
-allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
-</div>
-<p class="press-caption">Apple WWDC: Apple shows off big new AI upgrades to Siri | CNBC Television</p>
-</div>
-
-<div class="press-card" data-category="youtube">
-<div class="video-wrapper">
-<iframe 
-src="https://www.youtube.com/embed/GJKuKngdpVU" 
-title="Press release video" 
-frameborder="0" 
-allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
-</div>
-<p class="press-caption">Apple Intelligence Ad | More personal Siri - Tech T
-</p>
-</div>
-
-<div class="press-card" data-category="youtube">
-<div class="video-wrapper">
-<iframe 
-src="https://www.youtube.com/embed/_mfLnD1V44A" 
-title="Press release video" 
-frameborder="0" 
-allow="accelerometer; clip; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" 
-allowfullscreen>
-</iframe>
-</div>
-<p class="press-caption">
-How to get the best fit wearing Apple Vision Pro | Apple Support</p>
-</div>
-
-</section>
 
 <script>
 const filterButtons = document.querySelectorAll('.filter-btn');
 const pressCards = document.querySelectorAll('.press-card');
 
 filterButtons.forEach(button => {
-button.addEventListener('click', () => {
-filterButtons.forEach(btn => btn.classList.remove('active'));
-button.classList.add('active');
+  button.addEventListener('click', () => {
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
 
-const filter = button.dataset.filter;
+    const filter = button.dataset.filter;
 
-pressCards.forEach(card => {
-if (filter === 'all' || card.dataset.category === filter) {
-card.style.display = 'block';
-          } else {
-card.style.display = 'none';
-          }
-        });
-      });
+    pressCards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     });
+  });
+});
 </script>
 
 </body>

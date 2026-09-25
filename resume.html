@@ -5,187 +5,208 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Lisko // Portfolio</title>
   <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    gap: 0px; /* Reduces the vertical spacing between the header and sections */
+  }
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <h1>Alex Lisko </h1>
-    <nav>
-      <a href="index.html">WORK</a>
-      <a href="press.html">PRESS</a>
-      <a href="resume.html" class="active">RESUME</a>
-      <a href="about.html">ABOUT</a>
-      <a href="creative.html">CREATIVE LAB</a>
-      <a href="philosophy.html">PHILOSOPHY</a>
-    </nav>
-  </header>
+  <div class="wrap">
 
-  <section class="resume-intro">
-    <p>Human Factors Engineer/User Researcher with end-to-end experience spanning exploratory R&D to mass production.</p>
-    <a href="Alex_Lisko_Resume.pdf" class="resume-download" download>DOWNLOAD PDF</a>
-  </section>
+    <header class="site-header">
+      <h1>Alex Lisko</h1>
+      <nav>
+        <a href="index.html">WORK</a>
+        <a href="press.html">PRESS</a>
+        <a href="resume.html" class="active">RESUME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="creative.html">CREATIVE LAB</a>
+        <a href="philosophy.html">PHILOSOPHY</a>
+      </nav>
+    </header>
 
-  <section class="resume-list">
-        <h2 class="section-heading">Professional Experience</h2>
+    <div style="display: grid; gap: 24px;">
+      <section class="resume-intro">
+        <p>Human Factors Engineer/User Researcher with end-to-end experience spanning exploratory R&D to mass production.</p>
+        <a href="Alex_Lisko_Resume.pdf" class="resume-download" download>DOWNLOAD PDF</a>
+      </section>
+    </div>
 
-    <div class="resume-entry">
-  <img src="Apple-Logo.png" alt="Apple" class="resume-mark">
-  <div class="resume-details">
-        <div class="resume-top-row">
-          <span class="resume-company-name">Apple</span>
-          <span class="resume-dates">Sept 2021–Present</span>
+    <section class="resume-list">
+      <h2 class="section-heading">Professional Experience</h2>
+
+      <div class="resume-entry">
+        <img src="Apple-Logo.png" alt="Apple" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">Apple</span>
+            <span class="resume-dates">Sept 2021–Present</span>
+          </div>
+
+          <details class="resume-role-block" open>
+            <summary class="resume-role-header">
+              <span class="resume-role-title">
+                <span class="chevron"></span>
+                <span class="resume-role">User Researcher – Human Factors & Product Systems Quality</span>
+              </span>
+              <span class="resume-role-dates">June 2025–Nov 2025</span>
+            </summary>
+            <div class="resume-location">Cupertino, CA</div>
+            <ul class="resume-bullets">
+              <li>Initialized and scaled user research for a major Apple Vision Pro initiative, designing and executing empirical studies to evaluate comfort, perceptual quality, and human-system interaction metrics at scale.</li>
+              <li>Served as DRI (Directly Responsible Individual) for Apple's fastest large-scale validation study, establishing rigorous protocols to measure complex human dimensions and directly inform critical cross-functional build specifications.</li>
+              <li>Analyzed quantitative datasets from 200+ participants, translating complex behavioral and biometric data into visual, executive-ready presentations to guide senior leadership on product launch readiness.</li>
+              <li>Designed immersive 3D digital environments across 3 distinct platforms to optimize lab space configurations and testing workflows under compressed product ship cycles.</li>
+            </ul>
+          </details>
+
+          <details class="resume-role-block">
+            <summary class="resume-role-header">
+              <span class="resume-role-title">
+                <span class="chevron"></span>
+                <span class="resume-role">User Researcher – Apple Intelligence Siri (AIML)</span>
+              </span>
+              <span class="resume-role-dates">Jan 2024–June 2024</span>
+            </summary>
+            <div class="resume-location">Cupertino, CA</div>
+            <ul class="resume-bullets">
+              <li>Designed and executed 5 major mixed-methods product evaluation frameworks supporting Apple Intelligence, operationalizing multi-modal and multi-turn conversational AI interactions into observable UX metrics.</li>
+              <li>Directed end-to-end design of human annotation projects; authored detailed evaluation guidelines and successfully reconciled conflicts across complex multi-labeled datasets to train underlying AI models.</li>
+              <li>Evaluated non-deterministic AI experiences by running 20+ rapid prototype simulations, establishing actionable evaluation criteria to help ML and engineering partners refine system responsiveness.</li>
+              <li>Conducted and synthesized 700+ hours of qualitative and quantitative user research (including cognitive interviews and think-aloud protocols) to isolate qualitative patterns in model behaviors.</li>
+              <li>Integrated eye-tracking (Tobii) and biometric data across 10+ usability frameworks, translating physical and cognitive workload indicators into concrete algorithmic and UX recommendations.</li>
+              <li>Diagnosed conversational constraints (latency, response quality, search intent misalignment), translating technical audio and system limitations into user-centric UX recommendations that increased feature engagement.</li>
+            </ul>
+          </details>
+
+          <details class="resume-role-block">
+            <summary class="resume-role-header">
+              <span class="resume-role-title">
+                <span class="chevron"></span>
+                <span class="resume-role">Technical Specialist</span>
+              </span>
+              <span class="resume-role-dates">Sept 2021–Present</span>
+            </summary>
+            <div class="resume-location">Scottsdale, AZ</div>
+            <ul class="resume-bullets">
+              <li>Applied user-centered problem solving to identify user pain points and improve system usability through real-time support and issue resolution.</li>
+              <li>Performed troubleshooting and root-cause analysis across interconnected hardware, software, and service systems.</li>
+              <li>Synthesized insights from direct user interactions to inform systems thinking, human factors analysis, and workflow improvements.</li>
+              <li>Mentored team members on AI-enhanced support strategies, driving knowledge sharing and improving team operational efficiency.</li>
+            </ul>
+          </details>
         </div>
-
-        <details class="resume-role-block" open>
-          <summary class="resume-role-header">
-            <span class="resume-role-title">
-              <span class="chevron"></span>
-              <span class="resume-role">User Researcher – Human Factors & Product Systems Quality</span>
-            </span>
-            <span class="resume-role-dates">June 2025–Nov 2025</span>
-          </summary>
-          <div class="resume-location">Cupertino, CA</div>
-          <ul class="resume-bullets">
-            <li>Initialized and scaled user research for a major Apple Vision Pro initiative, designing and executing empirical studies to evaluate comfort, perceptual quality, and human-system interaction metrics at scale.</li>
-            <li>Served as DRI (Directly Responsible Individual) for Apple's fastest large-scale validation study, establishing rigorous protocols to measure complex human dimensions and directly inform critical cross-functional build specifications.</li>
-            <li>Analyzed quantitative datasets from 200+ participants, translating complex behavioral and biometric data into visual, executive-ready presentations to guide senior leadership on product launch readiness.</li>
-            <li>Designed immersive 3D digital environments across 3 distinct platforms to optimize lab space configurations and testing workflows under compressed product ship cycles.</li>
-          </ul>
-        </details>
-
-        <details class="resume-role-block">
-          <summary class="resume-role-header">
-            <span class="resume-role-title">
-              <span class="chevron"></span>
-              <span class="resume-role">User Researcher – Apple Intelligence Siri (AIML)</span>
-            </span>
-            <span class="resume-role-dates">Jan 2024–June 2024</span>
-          </summary>
-          <div class="resume-location">Cupertino, CA</div>
-          <ul class="resume-bullets">
-            <li>Designed and executed 5 major mixed-methods product evaluation frameworks supporting Apple Intelligence, operationalizing multi-modal and multi-turn conversational AI interactions into observable UX metrics.</li>
-            <li>Directed end-to-end design of human annotation projects; authored detailed evaluation guidelines and successfully reconciled conflicts across complex multi-labeled datasets to train underlying AI models.</li>
-            <li>Evaluated non-deterministic AI experiences by running 20+ rapid prototype simulations, establishing actionable evaluation criteria to help ML and engineering partners refine system responsiveness.</li>
-            <li>Conducted and synthesized 700+ hours of qualitative and quantitative user research (including cognitive interviews and think-aloud protocols) to isolate qualitative patterns in model behaviors.</li>
-            <li>Integrated eye-tracking (Tobii) and biometric data across 10+ usability frameworks, translating physical and cognitive workload indicators into concrete algorithmic and UX recommendations.</li>
-            <li>Diagnosed conversational constraints (latency, response quality, search intent misalignment), translating technical audio and system limitations into user-centric UX recommendations that increased feature engagement.</li>
-          </ul>
-        </details>
-     <details class="resume-role-block">
-          <summary class="resume-role-header">
-            <span class="resume-role-title">
-              <span class="chevron"></span>
-              <span class="resume-role">Technical Specialist</span>
-            </span>
-            <span class="resume-role-dates">Sept 2021–Present</span>
-          </summary>
-          <div class="resume-location">Scottsdale, AZ</div>
-          <ul class="resume-bullets">
-            <li>Applied user-centered problem solving to identify user pain points and improve system usability through real-time support and issue resolution.</li>
-            <li>Performed troubleshooting and root-cause analysis across interconnected hardware, software, and service systems.</li>
-            <li>Synthesized insights from direct user interactions to inform systems thinking, human factors analysis, and workflow improvements.</li>
-            <li>Mentored team members on AI-enhanced support strategies, driving knowledge sharing and improving team operational efficiency.</li>
-          </ul>
-        </details>
       </div>
-    </div>
 
-    <div class="resume-entry">
-  <img src="asu.png" alt="Arizona State Human Computer Interaction Lab" class="resume-mark">
-  <div class="resume-details">
-        <div class="resume-top-row">
-          <span class="resume-company-name">Arizona State Human Computer Interaction Lab</span>
-          <span class="resume-dates">Jan 2021–Dec 2021</span>
+      <div class="resume-entry">
+        <img src="asu.png" alt="Arizona State Human Computer Interaction Lab" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">Arizona State Human Computer Interaction Lab</span>
+            <span class="resume-dates">Jan 2021–Dec 2021</span>
+          </div>
+
+          <details class="resume-role-block">
+            <summary class="resume-role-header">
+              <span class="resume-role-title">
+                <span class="chevron"></span>
+                <span class="resume-role">Human Systems Engineer (Intern) – Human Machine Teaming</span>
+              </span>
+              <span class="resume-role-dates">Jan 2021–Dec 2021</span>
+            </summary>
+            <div class="resume-location">Tempe, AZ</div>
+            <ul class="resume-bullets">
+              <li>Programmed synthetic virtual testbed environments in Lua to evaluate human cognitive workload and situational awareness during autonomous search and rescue operations for a high-priority DOD initiative.</li>
+              <li>Iterated user-facing copy, tutorial instructions, and interactive UI frameworks within simulation environments, leveraging empirical behavioral data to improve operator training efficiency.</li>
+              <li>Mentored 5+ junior engineers on spatial thinking, interactive environment development, and rapid environment scripting.</li>
+            </ul>
+          </details>
         </div>
+      </div>
 
-        <details class="resume-role-block">
-          <summary class="resume-role-header">
-            <span class="resume-role-title">
-              <span class="chevron"></span>
-              <span class="resume-role">Human Systems Engineer (Intern) – Human Machine Teaming</span>
-            </span>
-            <span class="resume-role-dates">Jan 2021–Dec 2021</span>
-          </summary>
-          <div class="resume-location">Tempe, AZ</div>
+      <h2 class="section-heading">Education</h2>
+
+      <div class="resume-entry">
+        <img src="ASU2.png" alt="Ira A. Fulton School of Engineering" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="education-degree-title">Master of Science – User Experience (UX)</span>
+          </div>
+          <div class="education-school">Arizona State University – Ira A. Fulton School of Engineering, Tempe, AZ</div>
           <ul class="resume-bullets">
-            <li>Programmed synthetic virtual testbed environments in Lua to evaluate human cognitive workload and situational awareness during autonomous search and rescue operations for a high-priority DOD initiative.</li>
-            <li>Iterated user-facing copy, tutorial instructions, and interactive UI frameworks within simulation environments, leveraging empirical behavioral data to improve operator training efficiency.</li>
-            <li>Mentored 5+ junior engineers on spatial thinking, interactive environment development, and rapid environment scripting.</li>
+            <li>Thesis Project: Led UX design investigations on perceptual systems, integrating universal design, accessibility, anthropometric analysis, and ergonomics for inclusive solutions.</li>
           </ul>
-        </details>
-      </div>
-    </div>
-
-<h2 class="section-heading">Education</h2>
-
-    <div class="resume-entry">
-  <img src="ASU2.png" alt="Ira A. Fulton School of Engineering" class="resume-mark">
-  <div class="resume-details">
-        <div class="resume-top-row">
-          <span class="education-degree-title">Master of Science – User Experience (UX)</span>
         </div>
-        <div class="education-school">Arizona State University – Ira A. Fulton School of Engineering, Tempe, AZ</div>
-        <ul class="resume-bullets">
-          <li>Thesis Project: Led UX design investigations on perceptual systems, integrating universal design, accessibility, anthropometric analysis, and ergonomics for inclusive solutions.</li>
-        </ul>
       </div>
-    </div>
 
-    <div class="resume-entry">
-  <img src="asueng.png" alt="Ira A. Fulton School of Engineering" class="resume-mark">
-  <div class="resume-details">
-        <div class="resume-top-row">
-          <span class="education-degree-title">Bachelor of Science (B.S.) Human Systems Engineering</span>
+      <div class="resume-entry">
+        <img src="asueng.png" alt="Ira A. Fulton School of Engineering" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="education-degree-title">Bachelor of Science (B.S.) Human Systems Engineering</span>
+          </div>
+          <div class="education-school">Arizona State University – Ira A. Fulton School of Engineering, Polytechnic Campus</div>
+          <ul class="resume-bullets">
+            <li>Capstone Project: Led an end-to-end UX redesign for the Apple Health app, conducting user research to map user journeys and building interface solutions in Figma for formal panel review.</li>
+          </ul>
         </div>
-        <div class="education-school">Arizona State University – Ira A. Fulton School of Engineering, Polytechnic Campus</div>
-        <ul class="resume-bullets">
-          <li>Capstone Project: Led an end-to-end UX redesign for the Apple Health app, conducting user research to map user journeys and building interface solutions in Figma for formal panel review.</li>
-        </ul>
       </div>
-    </div>
 
-    <h2 class="section-heading">Certifications & Awards</h2>
+      <h2 class="section-heading">Certifications & Awards</h2>
 
-    <div class="resume-entry">
-  <img src="CU.png" alt="UC Boulder" class="resume-mark">
-  <div class="resume-details">
-    <div class="resume-top-row">
-      <span class="resume-company-name">Systems Engineering — Lockheed Martin Engineering Program</span>
-    </div>
-    <div class="education-school">University of Colorado Boulder — Credential ID: 01FNTZNV5ELA</div>
+      <div class="resume-entry">
+        <img src="CU.png" alt="UC Boulder" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">Systems Engineering — Lockheed Martin Engineering Program</span>
+          </div>
+          <div class="education-school">University of Colorado Boulder — Credential ID: 01FNTZNV5ELA</div>
+        </div>
+      </div>
+
+      <div class="resume-entry">
+        <img src="Google.png" alt="Google" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">Google Professional AI Certificate</span>
+          </div>
+          <div class="education-school">Credential ID: XXGOP400K2W9</div>
+        </div>
+      </div>
+
+      <div class="resume-entry">
+        <img src="CITI.png" alt="CITI Program" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">IRB – Social and Behavioral Research Group 2</span>
+          </div>
+          <div class="education-school">CITI Program — Credential ID: 40497225</div>
+        </div>
+      </div>
+
+      <div class="resume-entry">
+        <img src="plane.png" alt="Private Pilot" class="resume-mark">
+        <div class="resume-details">
+          <div class="resume-top-row">
+            <span class="resume-company-name">80+ Private Pilot Hours</span>
+          </div>
+          <div class="education-school">ATP Flight School + Private Pilot Instruction</div>
+        </div>
+      </div>
+    </section>
+
   </div>
-</div>
-
-  <div class="resume-entry">
-  <img src="Google.png" alt="Google" class="resume-mark">
-  <div class="resume-details">
-    <div class="resume-top-row">
-      <span class="resume-company-name">Google Professional AI Certificate</span>
-    </div>
-    <div class="education-school">Credential ID: XXGOP400K2W9</div>
-  </div>
-</div>
-
-  <div class="resume-entry">
-  <img src="CITI.png" alt="CITI Program" class="resume-mark">
-  <div class="resume-details">
-    <div class="resume-top-row">
-      <span class="resume-company-name">IRB – Social and Behavioral Research Group 2</span>
-    </div>
-    <div class="education-school">CITI Program — Credential ID: 40497225</div>
-  </div>
-</div>
-
-  <div class="resume-entry">
-  <img src="plane.png" alt="Private Pilot" class="resume-mark">
-  <div class="resume-details">
-    <div class="resume-top-row">
-      <span class="resume-company-name">80+ Private Pilot Hours</span>
-    </div>
-    <div class="education-school">ATP Flight School + Private Pilot Instruction</div>
-  </div>
-</div>
-  </section>
 
 </body>
 </html>

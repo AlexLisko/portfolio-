@@ -5,61 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Philosophy // Alex Lisko</title>
   <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    gap: 0px; /* Reduces the vertical spacing between the header and sections */
+  }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-<h1>Alex Lisko</h1>
-<nav>
-<a href="index.html">WORK</a>
-<a href="press.html">PRESS</a>
-<a href="resume.html">RESUME</a>
-<a href="about.html">ABOUT</a>
-<a href="creative.html">CREATIVE LAB</a>
-<a href="philosophy.html" class="active">PHILOSOPHY</a>
-</nav>
-</header>
-  <div class="manifesto-divider"></div>
+<div class="wrap">
 
-<div class="philosophy-header">
-  <p class="project-tagline philosophy-title">My Philosophy</p>
-  <p class="philosophy-hint">Click each line to see the thinking behind it.</p>
-</div>
+  <header class="site-header">
+    <h1>Alex Lisko</h1>
+    <nav>
+      <a href="index.html">WORK</a>
+      <a href="press.html">PRESS</a>
+      <a href="resume.html">RESUME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="creative.html">CREATIVE LAB</a>
+      <a href="philosophy.html" class="active">PHILOSOPHY</a>
+    </nav>
+  </header>
 
-  <div class="manifesto-list">
+  <div style="display: grid; gap: 32px;">
+    <div class="manifesto-divider"></div>
 
-    <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
-      <p class="manifesto-line">Stay curious.</p>
-      <div class="manifesto-underline"></div>
-      <p class="why-reveal">Ask questions before jumping to answers. Curiosity helps uncover the "why" behind people's behaviors, leading to more thoughtful, human-centered design</p>
+    <div class="philosophy-header">
+      <p class="project-tagline philosophy-title">My Philosophy</p>
+      <p class="philosophy-hint">Click each line to see the thinking behind it.</p>
     </div>
 
-    <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
-      <p class="manifesto-line">Challenge assumptions.</p>
-      <div class="manifesto-underline"></div>
-      <p class="why-reveal">Be willing to question your own thinking. The best ideas often emerge when you're open to being wrong.</p>
+    <div class="manifesto-list">
+
+      <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
+        <p class="manifesto-line">Stay curious.</p>
+        <div class="manifesto-underline"></div>
+        <p class="why-reveal">Ask questions before jumping to answers. Curiosity helps uncover the "why" behind people's behaviors, leading to more thoughtful, human-centered design</p>
+      </div>
+
+      <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
+        <p class="manifesto-line">Challenge assumptions.</p>
+        <div class="manifesto-underline"></div>
+        <p class="why-reveal">Be willing to question your own thinking. The best ideas often emerge when you're open to being wrong.</p>
+      </div>
+
+      <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
+        <p class="manifesto-line">Lead with Empathy.</p>
+        <div class="manifesto-underline"></div>
+        <p class="why-reveal">Everyone has a story you can't see. I strive to approach every interaction with curiosity, respect, and a genuine desire to understand another person's perspective.</p>
+      </div>
+
+      <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
+        <p class="manifesto-line">Diversify your Perspective.</p>
+        <div class="manifesto-underline"></div>
+        <p class="why-reveal">Growth doesn't happen inside a box. Build a diverse portfolio, surround yourself with people who think differently, and stay open to ideas that challenge your own. The broader your perspective, the more meaningful your impact.</p>
+      </div>
+
+      <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
+        <p class="manifesto-line">Have Fun!</p>
+        <p class="why-reveal">Life is too short not to enjoy what you do. Stay playful, celebrate progress, and don't be afraid to laugh at yourself along the way. The best ideas often come when you're having fun.</p>
+      </div>
+
     </div>
 
-    <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
-      <p class="manifesto-line">Lead with Empathy.</p>
-      <div class="manifesto-underline"></div>
-      <p class="why-reveal">Everyone has a story you can't see. I strive to approach every interaction with curiosity, respect, and a genuine desire to understand another person's perspective.</p>
-    </div>
+    <div class="manifesto-divider"></div>
 
-    <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
-      <p class="manifesto-line">Diversify your Perspective.</p>
-      <div class="manifesto-underline"></div>
-      <p class="why-reveal">Growth doesn't happen inside a box. Build a diverse portfolio, surround yourself with people who think differently, and stay open to ideas that challenge your own. The broader your perspective, the more meaningful your impact.</p>
+    <div>
+      <p class="manifesto-closer" onclick="this.classList.toggle('revealed-closer')">And challenge this philosophy, too!</p>
+      <p class="closer-why">If it says the exact same thing in ten years, I've probably stopped growing—and that would be a pretty bad philosophy to live by.</p>
     </div>
-
-    <div class="manifesto-row" onclick="this.classList.toggle('revealed')">
-      <p class="manifesto-line">Have Fun!</p>
-      <p class="why-reveal">Life is too short not to enjoy what you do. Stay playful, celebrate progress, and don't be afraid to laugh at yourself along the way. The best ideas often come when you're having fun.</p>
-    </div>
-
   </div>
 
-  <div class="manifesto-divider"></div>
+</div>
 
-  <p class="manifesto-closer" onclick="this.classList.toggle('revealed-closer')">And challenge this philosophy, too!</p>
-  <p class="closer-why">If it says the exact same thing in ten years, I've probably stopped growing—and that would be a pretty bad philosophy to live by.</p>
+</body>
+</html>
